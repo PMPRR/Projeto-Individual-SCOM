@@ -1,6 +1,6 @@
 # Projeto Individual de SCOM
 Este projeto tem o objetivo de criar um site confiável agregador de dados metereológicos do estado de São Paulo.
-
+Este site utiliza de dados públicos e submetidos por estações privadas para criar um mapa interativo e confiável para saber quais são as condições metereológicas a cada instante.
 
 ## Estrutura do Projeto
 ## Requerimentos
