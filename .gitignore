@@ -1,0 +1,4 @@
+dist/
+
+# Editor Artifacts
+.vscode/
