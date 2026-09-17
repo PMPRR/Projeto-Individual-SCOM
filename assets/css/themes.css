@@ -1,0 +1,63 @@
+/* ===================================================
+        theme.css
+-----------------------------------------------------
+This pallete was created based on the Kanagawa theme (rebelot/kanagawa.nvim):
+ - Lotus (light theme)
+ - Wave (dark theme)
+
+ This theme was created utilizing Claude IA.
+=================================================== */
+
+/* --- Wave: dark theme (default) --- */
+:root {
+    color-scheme: dark;
+
+    --c-bg:      #1F1F28; /* sumiInk3 */
+    --c-surface: #2A2A37; /* sumiInk4 */
+    --c-line:    #54546D; /* sumiInk6 */
+ 
+    --c-fg:      #DCD7BA; /* fujiWhite      — 10.96:1 sobre bg | 9.74:1 sobre surface */
+    --c-muted:   #C8C093; /* oldWhite       —  8.65:1 sobre bg | 7.69:1 sobre surface */
+    --c-accent:  #7E9CD8; /* crystalBlue    —  5.78:1 sobre bg | 5.14:1 sobre surface */
+    --c-warn:    #E6C384; /* carpYellow     —  9.47:1 sobre bg | 8.42:1 sobre surface */
+    --c-alert:   #EB7986; /* waveRed   (*)  —  5.77:1 sobre bg | 5.12:1 sobre surface */
+
+    --c-on-accent: #1F1F28;
+
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    color-scheme: light;
+ 
+    --c-bg:      #E5DDB0; /* lotusWhite2 */
+    --c-surface: #F2ECBC; /* lotusWhite3 — painel mais claro que a pagina */
+    --c-line:    #D5CEA3; /* lotusWhite0 — divisorias decorativas */
+    
+    --c-fg:      #545464; /* lotusInk1        — 5.41:1 sobre bg | 6.18:1 sobre surface */
+    --c-muted:   #5C5A4E; /* lotusGray2  (*)  — 5.06:1 sobre bg | 5.78:1 sobre surface */
+    --c-accent:  #42588A; /* lotusBlue4  (*)  — 5.11:1 sobre bg | 5.84:1 sobre surface */
+    --c-warn:    #8F4C00; /* lotusOrange (*)  — 4.78:1 sobre bg | 5.47:1 sobre surface */
+    --c-alert:   #A32F42; /* lotusRed    (*)  — 5.03:1 sobre bg | 5.78:1 sobre surface */
+ 
+    /* Texto sobre superficie preenchida com --c-accent */
+    --c-on-accent: #F2ECBC;
+  }
+}
+
+:root[data-theme="light"] {
+    color-scheme: light;
+
+    --c-bg:      #E5DDB0; /* lotusWhite2 */
+    --c-surface: #F2ECBC; /* lotusWhite3 — painel mais claro que a pagina */
+    --c-line:    #D5CEA3; /* lotusWhite0 — divisorias decorativas */
+    
+    --c-fg:      #545464; /* lotusInk1        — 5.41:1 sobre bg | 6.18:1 sobre surface */
+    --c-muted:   #5C5A4E; /* lotusGray2  (*)  — 5.06:1 sobre bg | 5.78:1 sobre surface */
+    --c-accent:  #42588A; /* lotusBlue4  (*)  — 5.11:1 sobre bg | 5.84:1 sobre surface */
+    --c-warn:    #8F4C00; /* lotusOrange (*)  — 4.78:1 sobre bg | 5.47:1 sobre surface */
+    --c-alert:   #A32F42; /* lotusRed    (*)  — 5.03:1 sobre bg | 5.78:1 sobre surface */
+    
+    /* Texto sobre superficie preenchida com --c-accent */
+    --c-on-accent: #F2ECBC;
+}
