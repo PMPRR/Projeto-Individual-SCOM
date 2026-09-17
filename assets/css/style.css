@@ -1,0 +1,87 @@
+/* ==========================================================================
+   Variables (Feito por IA)
+   ========================================================================== */
+ 
+:root {
+  /* Duas familias tipograficas. Pilhas nativas do sistema: zero requisicoes
+     de rede, o que preserva o LCP e mantem o site funcional offline. */
+  --font-ui: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, sans-serif;
+  --font-num: ui-monospace, SFMono-Regular, Menlo, Consolas,
+    "Liberation Mono", monospace;
+ 
+  /* Escala tipografica fluida. Corpo nunca abaixo de 1rem (16px). */
+  --fs-sm: 0.875rem;
+  --fs-base: 1rem;
+  --fs-lg: 1.125rem;
+  --fs-h2: clamp(1.25rem, 1.05rem + 1vw, 1.5rem);
+  --fs-h1: clamp(1.625rem, 1.2rem + 2vw, 2.25rem);
+ 
+  --lh-body: 1.6;   /* dentro da faixa recomendada de 1.4 a 1.8 */
+  --lh-title: 1.2;
+ 
+  /* Escala de espacamento em multiplos de 0.25rem. Usar apenas estes
+     valores mantem margens e paddings consistentes em todo o site. */
+  --sp-1: 0.25rem;
+  --sp-2: 0.5rem;
+  --sp-3: 0.75rem;
+  --sp-4: 1rem;
+  --sp-5: 1.5rem;
+  --sp-6: 2rem;
+  --sp-7: 3rem;
+ 
+  --radius: 0.5rem;
+  --radius-pill: 999px;
+  --focus-width: 3px;
+ 
+  --measure: 70ch;  /* largura de leitura: cerca de 70 caracteres por linha */
+  --wrap: 75rem;    /* largura maxima do conteudo */
+}
+
+/* ==========================================================================
+   Reset and user preferences  (Feito por IA)
+   ========================================================================== */
+ 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+ 
+body,
+h1,
+h2,
+h3,
+p,
+ul,
+figure,
+dl,
+dd {
+  margin: 0;
+  padding: 0;
+}
+ 
+/* role="list" no HTML preserva a semantica de lista, que o Safari remove
+   quando list-style e none. */
+ul {
+  list-style: none;
+}
+ 
+img {
+  max-width: 100%;
+  height: auto;
+}
+ 
+/* Respeita quem pediu menos animacao no sistema operacional. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+ 
+ 

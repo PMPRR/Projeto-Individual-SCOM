@@ -1,92 +1,38 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ClimaSP — Agregador Meteorológico do Estado de São Paulo</title>
-  <meta name="description" content="Agregador de dados meteorológicos de múltiplas fontes para o Estado de São Paulo, com mapa interativo de estações e indicador de confiança.">
-  <link rel="stylesheet" href="static/themes.css">
-  <link rel="stylesheet" href="static/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<title>ClimaSP - Agregador Metereológico</title>
+<link rel="stylesheet" href="./assets/css/themes.css">
+<link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
-
-
   <header>
-    <div class="header-inner">
-      <p class="logo"><a href="/">ClimaSP</a></p>
-      <nav aria-label="Navegação principal">
-        <ul>
-          <li><a href="#mapa" aria-current="page">Início</a></li>
-          <li><a href="#sobre">Sobre</a></li>
-          <li><a href="#fontes">Fontes</a></li>
-        </ul>
-      </nav>
-    </div>
+    <nav aria-label="Navegação principal">
+      <ul>
+        <li><a href="index.html" aria-current="page">Inicio</a></li>
+        <li><a href="./pages/map.html">Mapa</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <main id="main">
-    <h1>Condições meteorológicas do Estado de São Paulo</h1>
-
-    <section aria-labelledby="busca-heading" class="search-bar">
-      <h2 id="busca-heading" class="sr-only">Buscar estação</h2>
-      <form role="search" action="#" method="get">
-        <label for="busca-cidade">Buscar cidade ou estação</label>
-        <input type="search" id="busca-cidade" name="q" placeholder="Ex.: Sorocaba">
-        <button type="submit">Buscar</button>
-      </form>
-    </section>
-
-    <div class="layout">
-
-      <section id="mapa" aria-labelledby="mapa-heading" class="map-panel">
-        <h2 id="mapa-heading">Mapa interativo</h2>
-        <figure>
-          <div id="map" role="img" aria-label="Mapa do Estado de São Paulo com estações meteorológicas marcadas por nível de confiança"></div>
-          <figcaption>
-            <ul class="legend">
-              <li><span class="dot dot-high" aria-hidden="true"></span> Confiança alta</li>
-              <li><span class="dot dot-medium" aria-hidden="true"></span> Confiança média</li>
-              <li><span class="dot dot-low" aria-hidden="true"></span> Confiança baixa</li>
-            </ul>
-          </figcaption>
-        </figure>
-      </section>
-
-      <aside aria-labelledby="detalhe-heading" class="detail-panel">
-        <h2 id="detalhe-heading">Estação selecionada</h2>
-        <article id="estacao-detalhe">
-          <p class="station-name">Selecione uma estação no mapa</p>
-          <dl>
-            <div class="stat-row">
-              <dt>Temperatura</dt>
-              <dd>—</dd>
-            </div>
-            <div class="stat-row">
-              <dt>Vento</dt>
-              <dd>—</dd>
-            </div>
-            <div class="stat-row">
-              <dt>Chuva</dt>
-              <dd>—</dd>
-            </div>
-          </dl>
-          <p class="confidence-badge">Confiança: —</p>
-        </article>
-      </aside>
-
-    </div>
-
-    <section id="sobre" aria-labelledby="sobre-heading">
-      <h2 id="sobre-heading">Sobre o projeto</h2>
-      <p>O ClimaSP reúne dados de múltiplas fontes meteorológicas do Estado de São Paulo e interpola essas informações espacialmente, indicando o nível de confiança de cada estimativa.</p>
+  <main>
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="hero-content">
+        <h1>Condições meteorológicas do Estado de São Paulo</h1>
+        <p class="hero-actions">
+          <a class="btn btn-primary" href="./pages/map.html">Ver mapa interativo</a>
+          <a class="btn btn-secondary" href="./pages/login.html">Entrar</a>
+        </p>
+      </div>
+      <img class="hero-ilustracao"
+       src="assets/img/sao-paulo-800.webp"
+       srcset="assets/img/sao-paulo-600.webp 600w,
+               assets/img/sao-paulo-800.webp 800w"
+       sizes="(min-width: 64em) 26rem, 100vw"
+       alt="" width="800" height="566"
+       fetchpriority="high" decoding="async">
     </section>
   </main>
-
-  <footer id="fontes">
-    <p>Fontes de dados: INMET, CPTEC e estações privadas parceiras.</p>
-    <p>Projeto acadêmico desenvolvido para a disciplina de SCOM — ICTS-UNESP Sorocaba.</p>
-  </footer>
-
-  <script src="script.js" defer></script>
 </body>
-</html>
