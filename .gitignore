@@ -1,4 +1,7 @@
-dist/
+assets/data/
 
 # Editor Artifacts
 .vscode/
+tools/.cache
+tools/__pycache__
+.venv
