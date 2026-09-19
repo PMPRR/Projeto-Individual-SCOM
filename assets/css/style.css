@@ -269,6 +269,45 @@ a {
     fill: currentColor;
 }
 
+/* Floating Menu */
+.site-account-menu {
+    position: absolute;
+    inset-block-start: calc(100% + var(--sp-2));
+    inset-inline-end: 0;
+    z-index: 20;
+
+    display: flex;
+    flex-direction: column;
+    min-width: 12rem;
+    padding: var(--sp-2);
+
+    background-color: var(--c-surface);
+    border: 1px solid var(--c-line);
+    border-radius: var(--radius);
+}
+
+.site-account-menu[hidden] {
+    display: none;
+}
+
+.site-account-menu a {
+    display: flex;
+    align-items: center;
+    min-height: 2.75rem;
+    padding-inline: var(--sp-3);
+    border-radius: var(--radius);
+
+    color: var(--c-fg);
+    text-decoration: none;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.site-account-menu a:hover {
+    background-color: var(--c-bg);
+    color: var(--c-accent);
+}
+
 @media (max-width: 26em) {
     .site-header {
         gap: var(--sp-2);
