@@ -229,24 +229,46 @@ a {
 .site-account {
     grid-area: account;
     justify-self: end;
-
-    flex-direction: column;
-    gap: var(--sp-1);
-
-    padding: var(--sp-2) var(--sp-4);
-    border-radius: var(--radius);
-
-    font-size: var(--fs-sm);
-    line-height: 1.2;
+    position: relative;
 }
 
-.site-account svg {
+.site-account-toggle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--sp-1);
+
+    min-width: 3.5rem;
+    min-height: 2.75rem;
+    padding: var(--sp-1) var(--sp-3);
+    border: 2px solid transparent;
+    border-radius: var(--radius);
+
+    background-color: transparent;
+    color: var(--c-fg);
+    font: inherit;
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    line-height: 1.2;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.site-account-toggle:hover,
+.site-account-toggle[aria-expanded="true"] {
+    color: var(--c-accent);
+    border-color: var(--c-accent);
+
+}
+
+.site-account-toggle svg {
     height: 1.5rem;
     width: 1.5rem;
     flex: none;
     fill: currentColor;
 }
- 
+
 @media (max-width: 26em) {
     .site-header {
         gap: var(--sp-2);
