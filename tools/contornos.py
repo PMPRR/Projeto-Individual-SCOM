@@ -150,26 +150,34 @@ TABELA = {
 
 
 def _ponto(aresta, i, j, a, b, c, d, nivel, oeste, norte, passo_lon, passo_lat):
-    """Interpola a travessia do nivel sobre uma aresta da celula."""
+    """Interpola a travessia do nivel sobre uma aresta da celula.
+
+    O valor da grade representa o CENTRO da celula -- e assim que o mosaico e
+    montado e assim que mascara_estado o interpreta --, logo o no (i, j) cai
+    em oeste + (i + 0,5) * passo. Sem esse meio passo as curvas saem meia
+    celula a noroeste do recorte do Estado.
+    """
     if aresta == "T":
         t = (nivel - a) / (b - a)
-        return (oeste + (i + t) * passo_lon, norte - j * passo_lat)
+        return (oeste + (i + 0.5 + t) * passo_lon, norte - (j + 0.5) * passo_lat)
     if aresta == "B":
         t = (nivel - d) / (c - d)
-        return (oeste + (i + t) * passo_lon, norte - (j + 1) * passo_lat)
+        return (oeste + (i + 0.5 + t) * passo_lon, norte - (j + 1.5) * passo_lat)
     if aresta == "L":
         t = (nivel - a) / (d - a)
-        return (oeste + i * passo_lon, norte - (j + t) * passo_lat)
+        return (oeste + (i + 0.5) * passo_lon, norte - (j + 0.5 + t) * passo_lat)
     t = (nivel - b) / (c - b)
-    return (oeste + (i + 1) * passo_lon, norte - (j + t) * passo_lat)
+    return (oeste + (i + 1.5) * passo_lon, norte - (j + 0.5 + t) * passo_lat)
 
 
 def segmentos(grade, nivel, bbox):
     """Segmentos da isolinha `nivel`, em coordenadas (lon, lat)."""
     oeste, sul, leste, norte = bbox
     altura, largura = grade.shape
-    passo_lon = (leste - oeste) / (largura - 1)
-    passo_lat = (norte - sul) / (altura - 1)
+    # Celulas, e nao nos entre bordas: o mesmo passo de mascara_estado. Dividir
+    # por largura - 1 esticava as curvas em uma celula de ponta a ponta.
+    passo_lon = (leste - oeste) / largura
+    passo_lat = (norte - sul) / altura
 
     acima = grade >= nivel
     casos = (

@@ -239,13 +239,21 @@ def ler_geotiff(caminho):
 # Mosaico
 # ---------------------------------------------------------------------------
 
-
 def reduzir_bloco(matriz, fator):
-    """Media de blocos fator x fator, descartando a sobra das bordas."""
-    altura = matriz.shape[0] // fator * fator
-    largura = matriz.shape[1] // fator * fator
-    cortada = matriz[:altura, :largura]
-    return cortada.reshape(
+    """Media de blocos fator x fator, completando a sobra das bordas.
+
+    Cortar a sobra deixa cada folha alguns segundos mais estreita que os
+    1,5 x 1,0 grau nominais. Como montar() posiciona cada folha pela
+    geografia real, esse deficit se acumula e abre uma coluna (e uma linha)
+    que nenhuma folha escreve. Completando a sobra as folhas se sobrepoem em
+    uma celula, e a sobreposicao e inofensiva: quem escreve primeiro vence.
+    """
+    altura, largura = matriz.shape
+    falta_y, falta_x = (-altura) % fator, (-largura) % fator
+    if falta_y or falta_x:
+        matriz = numpy.pad(matriz, ((0, falta_y), (0, falta_x)), mode="edge")
+    altura, largura = matriz.shape
+    return matriz.reshape(
         altura // fator, fator, largura // fator, fator
     ).mean(axis=(1, 3))
 
@@ -369,6 +377,17 @@ def montar(bbox, res_alvo, cache, poligonos=None, manter_folhas=False):
         recorte = dados[y0 - linha:y1 - linha, x0 - coluna:x1 - coluna]
         destino = mosaico[y0:y1, x0:x1]
         mosaico[y0:y1, x0:x1] = numpy.where(numpy.isnan(destino), recorte, destino)
+
+    # Zerar o que sobrou e certo para o mar, mas uma folha que falhou no
+    # download deixa um retangulo inteiro de NaN que vira um plato de 0 m --
+    # e o gerador de curvas desenha a borda dele como se fosse relevo. O
+    # aviso e barato e evita depurar isso pelo desenho.
+    faltando = int(numpy.isnan(mosaico).sum())
+    if faltando:
+        print(
+            "  aviso: %d celulas sem dado (%.2f%% do mosaico) zeradas"
+            % (faltando, 100.0 * faltando / mosaico.size)
+        )
 
     # Oceano e vazios: altitude zero, para nao abrir buracos no sombreamento.
     return numpy.nan_to_num(mosaico, nan=0.0)

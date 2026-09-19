@@ -171,12 +171,47 @@
   const faixasRelevo = [];
   const curvasRelevo = [];
 
+  /* Rampa altimetrica, lida do tema: uma cor por faixa de INTERVALO_RELEVO
+     metros. --relevo-0 e o piso (0 a 200 m), que nao tem anel proprio -- e o
+     que sobra da malha do Estado --, e --relevo-k pinta a faixa que comeca em
+     k * INTERVALO_RELEVO. Mantendo as cores no CSS, Wave e Lotus ganham
+     rampas diferentes sem que este arquivo saiba de nenhuma das duas. */
+  const INTERVALO_RELEVO =
+    (window.SP_RELEVO && window.SP_RELEVO.intervalo) || 200;
+
+  function rampaRelevo() {
+    const atual = getComputedStyle(document.documentElement);
+    const cores = [];
+    for (let k = 0; ; k++) {
+      const c = atual.getPropertyValue("--relevo-" + k).trim();
+      if (!c) break;
+      cores.push(c);
+    }
+    return cores.length ? cores : [C_SUPERFICIE, C_LINHA];
+  }
+
+  /* Acima do ultimo tom da rampa tudo recebe o tom do topo: a escala pode ser
+     mais curta que os niveis do arquivo sem quebrar nada. */
+  function corDoNivel(altitude, cores) {
+    const k = Math.round(altitude / INTERVALO_RELEVO);
+    return cores[Math.min(Math.max(k, 0), cores.length - 1)];
+  }
+
+  /* Curva mestra a cada 1000 m, como nas cartas topograficas do IBGE. */
+  function ehMestra(altitude) {
+    return altitude % 1000 === 0;
+  }
+
   if (window.SP_RELEVO) {
+    const cores = rampaRelevo();
+
     window.SP_RELEVO.niveis.forEach(function (nivel) {
-      /* As regioes sao acumuladas e portanto encaixadas umas nas outras.
-         Pintadas da mais baixa para a mais alta com opacidade pequena, a
-         sobreposicao produz o degrade altimetrico sozinha -- sem rampa de
-         cores e sem acrescentar nenhuma cor a interface.
+      /* As regioes sao acumuladas e portanto encaixadas umas nas outras:
+         {alt >= 400} esta inteira dentro de {alt >= 200}. Pintadas da mais
+         baixa para a mais alta, cada uma cobre a anterior e o que sobra a
+         vista e exatamente a faixa daquele nivel. A ordem de insercao e a
+         ordem de desenho no renderizador em canvas, entao os niveis precisam
+         continuar em ordem crescente no arquivo.
 
          fillRule evenodd resolve de brinde o caso raro de uma depressao
          fechada acima do limiar: o anel interno vira furo. */
@@ -185,20 +220,30 @@
         pane: "relevo",
         stroke: false,
         fillRule: "evenodd",
-        fillOpacity: 0.06,
+        fillColor: corDoNivel(nivel.altitude, cores),
+        /* Nao opaco de proposito: o contorno da malha, que fica no painel de
+           baixo, continua visivel por tras da faixa mais baixa. */
+        fillOpacity: 0.85,
         interactive: false,
       });
 
       /* Mesmo array de aneis, outro estilo: as curvas de nivel sao o contorno
-         das faixas. */
+         das faixas, e recebem a cor da sua propria altitude para que as duas
+         camadas digam a mesma coisa quando ligadas juntas. */
       const curva = L.polygon(nivel.aneis, {
         renderer: tracadorRelevo,
         pane: "relevo",
-        weight: 0.6,
-        opacity: 0.75,
+        color: corDoNivel(nivel.altitude, cores),
+        weight: ehMestra(nivel.altitude) ? 1.3 : 0.6,
+        opacity: ehMestra(nivel.altitude) ? 0.95 : 0.8,
         fill: false,
         interactive: false,
       });
+
+      /* A altitude fica guardada na camada: e ela que permite repintar a
+         rampa inteira na troca de tema sem reconstruir geometria. */
+      faixa.altitude = nivel.altitude;
+      curva.altitude = nivel.altitude;
 
       faixasRelevo.push(faixa);
       curvasRelevo.push(curva);
@@ -209,6 +254,46 @@
     mapa.attributionControl.addAttribution(
       'Altimetria: <a href="http://www.dsr.inpe.br/topodata/">TOPODATA/INPE</a>'
     );
+  }
+
+  /* A escala sai dos niveis que sobraram no arquivo, e nao de uma lista fixa:
+     se um nivel alto desaparecer por area minima, a legenda acompanha. Sem
+     ela as cores seriam enfeite -- e e este bloco o equivalente textual da
+     camada para quem nao distingue os tons. */
+  function montarLegendaRelevo() {
+    const alvo = document.getElementById("legenda-relevo");
+    if (!alvo || !window.SP_RELEVO || !window.SP_RELEVO.niveis.length) return;
+
+    const cores = rampaRelevo();
+    const niveis = window.SP_RELEVO.niveis;
+    const topo = niveis[niveis.length - 1].altitude;
+
+    const faixas = [{ de: 0, cor: cores[0] }];
+    niveis.forEach(function (nivel) {
+      faixas.push({ de: nivel.altitude, cor: corDoNivel(nivel.altitude, cores) });
+    });
+
+    /* Da mais alta para a mais baixa, como nas escalas hipsometricas
+       impressas. */
+    alvo.innerHTML = faixas
+      .slice()
+      .reverse()
+      .map(function (faixa) {
+        const rotulo =
+          faixa.de === topo
+            ? "acima de " + faixa.de + " m"
+            : faixa.de + " a " + (faixa.de + INTERVALO_RELEVO) + " m";
+        return [
+          '<div class="legend-item">',
+          '  <dt><span class="legend-swatch legend-swatch-faixa" style="background-color: ',
+          faixa.cor,
+          '" aria-hidden="true"></span>',
+          rotulo,
+          "</dt>",
+          "</div>",
+        ].join("");
+      })
+      .join("");
   }
 
   /* ---------------------------------------------------------------------
@@ -354,8 +439,17 @@
     }
 
     const linha = cor("--c-line", C_LINHA);
-    faixasRelevo.forEach(function (f) { f.setStyle({ fillColor: linha }); });
-    curvasRelevo.forEach(function (c) { c.setStyle({ color: linha }); });
+
+    /* O relevo segue a rampa altimetrica, nao a cor de linha: repintar tudo
+       com --c-line aqui apagaria a escala na primeira troca de tema. */
+    const rampa = rampaRelevo();
+    faixasRelevo.forEach(function (f) {
+      f.setStyle({ fillColor: corDoNivel(f.altitude, rampa) });
+    });
+    curvasRelevo.forEach(function (c) {
+      c.setStyle({ color: corDoNivel(c.altitude, rampa) });
+    });
+    montarLegendaRelevo();
 
     const paleta = {
       alta: cor("--c-accent", CORES.alta),
@@ -366,9 +460,16 @@
       f.setStyle({ fillColor: paleta[f.chaveConfianca] });
     });
 
+    /* Com a hipsometria ligada, a malha deixa de ser superficie e passa a ser
+       a faixa de 0 a INTERVALO_RELEVO metros -- a unica que nao tem anel
+       proprio, porque o seu contorno externo e a fronteira do Estado. */
+    const hipsometria = document.getElementById("camada-hipsometria");
     estado.setStyle({
       color: linha,
-      fillColor: cor("--c-surface", C_SUPERFICIE),
+      fillColor:
+        hipsometria && hipsometria.checked
+          ? rampa[0]
+          : cor("--c-surface", C_SUPERFICIE),
     });
   }
 
@@ -392,18 +493,41 @@
   };
 
   const CAMPOS = { confianca: camadaConfianca };
-  const LEGENDAS = { confianca: "legenda-confianca" };
+  const LEGENDAS = { confianca: "bloco-confianca" };
 
   const caixas = document.querySelectorAll("[data-camada]");
 
+  /* A escala altimetrica so faz sentido com alguma camada de relevo no ar, e
+     a faixa mais baixa mora na malha do Estado: as duas coisas mudam junto
+     com as caixas de selecao. */
+  function atualizarRelevo() {
+    const hipsometria = document.getElementById("camada-hipsometria");
+    const curvas = document.getElementById("camada-curvas");
+    const ativo =
+      (hipsometria && hipsometria.checked) || (curvas && curvas.checked);
+
+    const bloco = document.getElementById("bloco-relevo");
+    if (bloco) bloco.hidden = !ativo || !window.SP_RELEVO;
+
+    const rampa = rampaRelevo();
+    estado.setStyle({
+      fillColor:
+        hipsometria && hipsometria.checked
+          ? rampa[0]
+          : token("--c-surface", C_SUPERFICIE),
+    });
+  }
+
   function aplicar(caixa) {
     const camada = CAMADAS[caixa.dataset.camada];
-    if (!camada) return;
-    if (caixa.checked) {
-      mapa.addLayer(camada);
-    } else {
-      mapa.removeLayer(camada);
+    if (camada) {
+      if (caixa.checked) {
+        mapa.addLayer(camada);
+      } else {
+        mapa.removeLayer(camada);
+      }
     }
+    atualizarRelevo();
   }
 
   caixas.forEach(function (caixa) {

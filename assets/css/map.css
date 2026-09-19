@@ -155,6 +155,19 @@
   margin-block-start: var(--sp-4);
 }
 
+/* display: flex vence a regra display: none que o navegador aplica a
+   [hidden], entao o atributo precisa ser reafirmado aqui -- do contrario as
+   legendas montadas por map.js aparecem mesmo escondidas. */
+.legend[hidden],
+.legend-block[hidden] {
+  display: none;
+}
+
+.legend-block h3 {
+  margin-block-start: var(--sp-5);
+  font-size: var(--fs-lg);
+}
+
 .legend-item dt {
   display: flex;
   align-items: center;
@@ -186,6 +199,23 @@
 
 .legend-swatch-low {
   background-color: var(--c-alert);
+}
+
+/* Faixas sao areas, nao pontos: quadradas, como nas escalas impressas. A cor
+   vem por atributo style, montada em JS a partir da rampa do tema. */
+.legend-swatch-faixa {
+  border-radius: var(--radius);
+}
+
+/* A escala altimetrica tem mais de uma duzia de faixas: compacta, sem
+   descricao por item, e legivel de cima para baixo. */
+.legend-relevo {
+  gap: var(--sp-1);
+}
+
+.legend-relevo .legend-item dt {
+  font-weight: 400;
+  font-size: var(--fs-sm);
 }
 
 /* ==========================================================================

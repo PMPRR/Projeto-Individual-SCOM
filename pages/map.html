@@ -16,7 +16,7 @@
         <script src="../assets/vendor/leaflet/leaflet.js" defer></script>
         <script src="../assets/data/sp-geo.js" defer></script>
         <script src="../assets/data/relevo-sp.js" defer></script>
-        <script src="../assets/data/campo.js" defer></script>
+        <script src="../assets/js/campo.js" defer></script>
         <script src="../assets/js/map.js" defer></script>
     </head>
     <body>
@@ -128,6 +128,22 @@
                             <dd>Leitura antiga ou divergente das estações vizinhas.</dd>
                         </div>
                     </dl>
+
+                    <!-- Escala hipsométrica. O conteúdo é montado por map.js a
+                         partir de relevo-sp.js, porque as faixas que sobram no
+                         arquivo dependem dos dados, não de uma lista fixa. -->
+                    <div class="legend-block" id="bloco-relevo" hidden>
+                        <h3>Altitude</h3>
+                        <dl class="legend legend-relevo" id="legenda-relevo"></dl>
+                    </div>
+
+                    <!-- Legenda do campo interpolado: as porcentagens mudam com
+                         as estações, então também são montadas por map.js. -->
+                    <div class="legend-block" id="bloco-confianca" hidden>
+                        <h3>Campo de confiança</h3>
+                        <dl class="legend" id="legenda-confianca"></dl>
+                        <p class="map-caption" id="campo-resumo" hidden></p>
+                    </div>
                 </aside>
             </div>
 

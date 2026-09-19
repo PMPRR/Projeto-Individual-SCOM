@@ -24,6 +24,15 @@ This pallete was created based on the Kanagawa theme (rebelot/kanagawa.nvim):
 
     --c-on-accent: #1F1F28;
 
+    /* Rampa altimetrica (200 m por faixa). Fora dos seis tons da interface de
+    proposito: aqui a cor e dado, nao decoracao. */
+    --relevo-0:  #2A2A37;  /* 0-200 m, igual a superficie */
+    --relevo-1:  #3F5E4A;  --relevo-2:  #4F7050;  --relevo-3:  #648457;
+    --relevo-4:  #7E9A5E;  --relevo-5:  #98BB6C;  --relevo-6:  #B4B06B;
+    --relevo-7:  #C0A36E;  --relevo-8:  #DCA561;  --relevo-9:  #E08C5E;
+    --relevo-10: #FFA066;  --relevo-11: #E6879A;  --relevo-12: #D27E99;
+    --relevo-13: #C8BFA8;  --relevo-14: #DCD7BA;
+
 }
 
 @media (prefers-color-scheme: light) {
@@ -42,6 +51,15 @@ This pallete was created based on the Kanagawa theme (rebelot/kanagawa.nvim):
  
     /* Texto sobre superficie preenchida com --c-accent */
     --c-on-accent: #F2ECBC;
+
+    /* Rampa altimetrica (200 m por faixa). Fora dos seis tons da interface de
+    proposito: aqui a cor e dado, nao decoracao. */
+    --relevo-0:  #2A2A37;  /* 0-200 m, igual a superficie */
+    --relevo-1:  #3F5E4A;  --relevo-2:  #4F7050;  --relevo-3:  #648457;
+    --relevo-4:  #7E9A5E;  --relevo-5:  #98BB6C;  --relevo-6:  #B4B06B;
+    --relevo-7:  #C0A36E;  --relevo-8:  #DCA561;  --relevo-9:  #E08C5E;
+    --relevo-10: #FFA066;  --relevo-11: #E6879A;  --relevo-12: #D27E99;
+    --relevo-13: #C8BFA8;  --relevo-14: #DCD7BA;
   }
 }
 
@@ -51,13 +69,20 @@ This pallete was created based on the Kanagawa theme (rebelot/kanagawa.nvim):
     --c-bg:      #E5DDB0; /* lotusWhite2 */
     --c-surface: #F2ECBC; /* lotusWhite3 — painel mais claro que a pagina */
     --c-line:    #D5CEA3; /* lotusWhite0 — divisorias decorativas */
-    
+
     --c-fg:      #545464; /* lotusInk1        — 5.41:1 sobre bg | 6.18:1 sobre surface */
     --c-muted:   #5C5A4E; /* lotusGray2  (*)  — 5.06:1 sobre bg | 5.78:1 sobre surface */
     --c-accent:  #42588A; /* lotusBlue4  (*)  — 5.11:1 sobre bg | 5.84:1 sobre surface */
     --c-warn:    #8F4C00; /* lotusOrange (*)  — 4.78:1 sobre bg | 5.47:1 sobre surface */
     --c-alert:   #A32F42; /* lotusRed    (*)  — 5.03:1 sobre bg | 5.78:1 sobre surface */
-    
+
     /* Texto sobre superficie preenchida com --c-accent */
     --c-on-accent: #F2ECBC;
+
+    --relevo-0:  #EDE7C4;  /* 0-200 m, quase a superficie */
+    --relevo-1:  #CFDCA8;  --relevo-2:  #C3D497;  --relevo-3:  #BCCB88;
+    --relevo-4:  #C6C87E;  --relevo-5:  #D2C276;  --relevo-6:  #DBB56B;
+    --relevo-7:  #DCA561;  --relevo-8:  #D39257;  --relevo-9:  #C67F4F;
+    --relevo-10: #B36A48;  --relevo-11: #A05C46;  --relevo-12: #8E5347;
+    --relevo-13: #9C7A6A;  --relevo-14: #C2B6A8;
 }
