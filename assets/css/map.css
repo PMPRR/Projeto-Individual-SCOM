@@ -1,0 +1,253 @@
+/* ==========================================================================
+   Exclusive styles for the map.html
+   ========================================================================== */
+
+.map-page {
+  width: min(100% - 2 * var(--gutter), var(--wrap));
+  margin-inline: auto;
+  padding-block: var(--sp-5) var(--sp-7);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-5);
+}
+
+.map-layout {
+  display: grid;
+  gap: var(--sp-5);
+}
+
+.map-figure {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+/* A altura e reservada aqui, antes de o Leaflet montar: o contentor nunca
+   colapsa para zero e o deslocamento de layout (CLS) fica proximo de zero. */
+.map-canvas {
+  block-size: clamp(20rem, 55vh, 34rem);
+  /* Contem os z-index internos do Leaflet (paneis em 400, controles em 1000),
+     que de outra forma passariam por cima do cabecalho fixo. */
+  isolation: isolate;
+  overflow: hidden;
+  border: 1px solid var(--c-line);
+  border-radius: var(--radius);
+  background-color: var(--c-surface);
+}
+
+.map-caption {
+  max-width: var(--measure);
+  color: var(--c-muted);
+  font-size: var(--fs-sm);
+}
+
+.map-status {
+  min-height: 1.5rem;
+  color: var(--c-muted);
+  font-size: var(--fs-sm);
+}
+
+/* Sem ladrilhos, o fundo do mapa e a propria pagina: os creditos e os
+   controles passam a usar as variaveis do tema. */
+.leaflet-container {
+  background-color: var(--c-bg);
+  font: inherit;
+}
+
+.leaflet-container a:focus-visible,
+.leaflet-container button:focus-visible {
+  outline: var(--focus-width) solid var(--c-accent);
+  outline-offset: 2px;
+}
+
+.leaflet-control-attribution {
+  background-color: var(--c-surface);
+  color: var(--c-muted);
+  font-size: var(--fs-sm);
+}
+
+.leaflet-control-attribution a {
+  color: var(--c-accent);
+}
+
+.leaflet-bar a {
+  background-color: var(--c-surface);
+  color: var(--c-fg);
+  border-block-end-color: var(--c-line);
+}
+
+.leaflet-bar a:hover {
+  background-color: var(--c-bg);
+  color: var(--c-accent);
+}
+
+/* ==========================================================================
+   Seletor de camadas
+   ========================================================================== */
+
+.layer-toggles {
+  margin: 0 0 var(--sp-5);
+  padding: 0;
+  border: 0; /* o fieldset existe pela semantica, nao pela moldura */
+}
+
+.layer-toggles-legend {
+  padding: 0;
+  margin-block-end: var(--sp-3);
+  color: var(--c-muted);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+}
+
+.layer-toggle {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  min-height: 2.75rem; /* alvo de toque de 44px */
+}
+
+.layer-toggle input {
+  inline-size: 1.125rem;
+  block-size: 1.125rem;
+  flex: none;
+  accent-color: var(--c-accent);
+  cursor: pointer;
+}
+
+.layer-toggle label {
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.layer-toggle input:disabled,
+.layer-toggle input:disabled + label {
+  cursor: not-allowed;
+  color: var(--c-muted);
+  opacity: 0.6;
+}
+
+.layer-toggles-hint {
+  margin-block-start: var(--sp-2);
+  color: var(--c-muted);
+  font-size: var(--fs-sm);
+}
+
+.layer-toggles-hint[hidden] {
+  display: none;
+}
+
+/* ==========================================================================
+   Legend
+   ========================================================================== */
+
+.map-aside {
+  padding: var(--sp-4);
+  border: 1px solid var(--c-line);
+  border-radius: var(--radius);
+  background-color: var(--c-surface);
+}
+
+.legend {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+  margin-block-start: var(--sp-4);
+}
+
+.legend-item dt {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-weight: 600;
+}
+
+.legend-item dd {
+  margin-inline-start: calc(var(--sp-4) + var(--sp-2));
+  color: var(--c-muted);
+  font-size: var(--fs-sm);
+}
+
+.legend-swatch {
+  inline-size: var(--sp-4);
+  block-size: var(--sp-4);
+  flex: none;
+  border: 1px solid var(--c-line);
+  border-radius: var(--radius-pill);
+}
+
+.legend-swatch-high {
+  background-color: var(--c-accent);
+}
+
+.legend-swatch-medium {
+  background-color: var(--c-warn);
+}
+
+.legend-swatch-low {
+  background-color: var(--c-alert);
+}
+
+/* ==========================================================================
+   Lista textual das estacoes (alternativa acessivel ao mapa)
+   ========================================================================== */
+
+.station-list-status {
+  color: var(--c-muted);
+  font-size: var(--fs-sm);
+}
+
+.station-grid {
+  display: grid;
+  gap: var(--sp-4);
+  margin-block-start: var(--sp-4);
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+}
+
+.station-card {
+  block-size: 100%;
+  padding: var(--sp-4);
+  border: 1px solid var(--c-line);
+  border-radius: var(--radius);
+  background-color: var(--c-surface);
+}
+
+.station-card h3 {
+  font-size: var(--fs-lg);
+}
+
+.station-card-meta {
+  color: var(--c-muted);
+  font-size: var(--fs-sm);
+}
+
+.station-readings {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--sp-1) var(--sp-3);
+  margin-block-start: var(--sp-3);
+}
+
+.station-readings dt {
+  color: var(--c-muted);
+}
+
+.station-readings dd {
+  margin: 0;
+  font-family: var(--font-num);
+}
+
+/* ==========================================================================
+   Breakpoints
+   ========================================================================== */
+
+@media (min-width: 64em) {
+  .map-layout {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 18rem);
+    align-items: start;
+  }
+
+  .map-canvas {
+    block-size: clamp(24rem, 62vh, 40rem);
+  }
+}

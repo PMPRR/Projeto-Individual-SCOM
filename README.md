@@ -5,6 +5,12 @@ Este site utiliza de dados públicos e submetidos por estações privadas para c
 ## Estrutura do Projeto
 ## Requerimentos
 Para compilar este projeto é necessário possuir os seguintes programas:
+ - `python`
+## Como Compilar
+```sh
+python tools/build-sp-geo.py
+```
+
 ## Como Executar
 
 ### Visualizar o site:
@@ -12,7 +18,8 @@ Para compilar este projeto é necessário possuir os seguintes programas:
 
 ## Roadmap
  - [x] Definição do projeto, estrutura e softwares utilizados.
- - [ ] Estrutura do projeto e gerador do site
+ - [x] Estrutura do pagina inicial
+ - [x] Estrutura do pagina com mapa
 
 
 ## Autor:
