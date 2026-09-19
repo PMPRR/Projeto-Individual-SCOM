@@ -737,7 +737,9 @@ def construir_relevo(poligonos, fonte="topodata"):
 
 def main():
     argumentos = set(sys.argv[1:])
-    desconhecidos = argumentos - {"--geo", "--relevo", "--topodata", "--terrain-tiles"}
+    desconhecidos = argumentos - {
+        "--geo", "--relevo", "--contornos", "--topodata", "--terrain-tiles"
+    }
     if desconhecidos:
         print("argumento desconhecido: %s" % ", ".join(sorted(desconhecidos)))
         print(__doc__)
@@ -746,16 +748,21 @@ def main():
     fonte = "terrarium" if "--terrain-tiles" in argumentos else "topodata"
     pedidos = argumentos - {"--topodata", "--terrain-tiles"}
 
+
     quer_geo = not pedidos or "--geo" in pedidos
-    quer_relevo = not pedidos or "--relevo" in pedidos
+    quer_relevo = "--relevo" in pedidos          # deixou de ser padrao
+    quer_contornos = not pedidos or "--contornos" in pedidos
 
     poligonos = construir_malha(escrever=quer_geo)
 
     if quer_relevo:
-        if quer_geo:
-            print()
+        print()
         construir_relevo(poligonos, fonte)
 
+    if quer_contornos:
+        import contornos
+        print()
+        contornos.construir(poligonos)
     return 0
 
 

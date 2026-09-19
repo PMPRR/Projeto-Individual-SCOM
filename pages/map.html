@@ -15,6 +15,8 @@
         <script src="../assets/js/script.js" defer></script>
         <script src="../assets/vendor/leaflet/leaflet.js" defer></script>
         <script src="../assets/data/sp-geo.js" defer></script>
+        <script src="../assets/data/relevo-sp.js" defer></script>
+        <script src="../assets/data/campo.js" defer></script>
         <script src="../assets/js/map.js" defer></script>
     </head>
     <body>
@@ -71,34 +73,54 @@
                     <h2 id="layers-heading">Camadas</h2>
 
                     <!-- fieldset/legend agrupa as caixas relacionadas; cada
-                         label e associado por for/id ao seu input. -->
-                    <fieldset class="layer-toggles">
-                        <legend class="layer-toggles-legend">Sobreposições</legend>
+                        label e associado por for/id ao seu input. -->
+                        <fieldset class="layer-toggles">
+                            <legend class="layer-toggles-legend">Campo interpolado</legend>
 
-                        <div class="layer-toggle">
-                            <input type="checkbox" id="camada-estacoes" data-camada="estacoes" checked>
-                            <label for="camada-estacoes">Estações</label>
-                        </div>
+                            <div class="layer-toggle">
+                                <input type="radio" id="campo-nenhum" name="campo" value="nenhum" data-campo checked>
+                                <label for="campo-nenhum">Nenhum</label>
+                            </div>
 
-                        <div class="layer-toggle">
-                            <input type="checkbox" id="camada-relevo" data-camada="relevo">
-                            <label for="camada-relevo">Relevo</label>
-                        </div>
+                            <div class="layer-toggle">
+                                <input type="radio" id="campo-confianca" name="campo" value="confianca" data-campo>
+                                <label for="campo-confianca">Confiança da medição</label>
+                            </div>
+                        </fieldset>
 
-                        <p class="layer-toggles-hint" id="camada-relevo-aviso" hidden>
-                            Camada de relevo indisponível: o arquivo
-                            <code>assets/img/relevo-sp.png</code> não foi encontrado.
-                        </p>
-                    </fieldset>
+                        <fieldset class="layer-toggles">
+                            <legend class="layer-toggles-legend">Referências</legend>
 
-                    <h2 id="legend-heading">Legenda</h2>
-                    <dl class="legend">
-                        <div class="legend-item">
-                            <dt><span class="legend-swatch legend-swatch-high" aria-hidden="true"></span>Confiança alta</dt>
-                            <dd>Estação oficial, leitura recente e validada.</dd>
-                        </div>
-                        <div class="legend-item">
-                            <dt><span class="legend-swatch legend-swatch-medium" aria-hidden="true"></span>Confiança média</dt>
+                            <div class="layer-toggle">
+                                <input type="checkbox" id="camada-estacoes" data-camada="estacoes" checked>
+                                <label for="camada-estacoes">Estações</label>
+                            </div>
+
+                            <div class="layer-toggle">
+                                <input type="checkbox" id="camada-hipsometria" data-camada="hipsometria">
+                                <label for="camada-hipsometria">Faixas altimétricas</label>
+                            </div>
+
+                            <div class="layer-toggle">
+                                <input type="checkbox" id="camada-curvas" data-camada="curvas">
+                                <label for="camada-curvas">Curvas de nível (200 m)</label>
+                            </div>
+
+                            <p class="layer-toggles-hint" id="relevo-aviso" hidden>
+                            Camadas de relevo indisponíveis: gere
+                            <code>assets/data/relevo-sp.js</code> com
+                            <code>python3 tools/build-sp-geo.py --contornos</code>.
+                            </p>
+                        </fieldset>
+
+                        <h2 id="legend-heading">Legenda</h2>
+                        <dl class="legend">
+                            <div class="legend-item">
+                                <dt><span class="legend-swatch legend-swatch-high" aria-hidden="true"></span>Confiança alta</dt>
+                                <dd>Estação oficial, leitura recente e validada.</dd>
+                            </div>
+                            <div class="legend-item">
+                                <dt><span class="legend-swatch legend-swatch-medium" aria-hidden="true"></span>Confiança média</dt>
                             <dd>Estação privada com histórico consistente.</dd>
                         </div>
                         <div class="legend-item">
