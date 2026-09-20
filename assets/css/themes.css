@@ -34,6 +34,20 @@ This pallete was created based on the Kanagawa theme (rebelot/kanagawa.nvim):
     --relevo-10: #FFA066;  --relevo-11: #E6879A;  --relevo-12: #D27E99;
     --relevo-13: #C8BFA8;  --relevo-14: #DCD7BA;
 
+    /* Rampa termica (2 C por faixa, de 10 a 34 C). Escala fixa: a mesma cor
+    significa a mesma temperatura em qualquer captura. --temp-0 e "abaixo de
+    12 C" e --temp-12 e "acima de 34 C". */
+    --temp-0:  #4C6A93;  --temp-1:  #5F82B5;  --temp-2:  #7E9CD8;
+    --temp-3:  #7FB4CA;  --temp-4:  #7AA89F;  --temp-5:  #8CAE86;
+    --temp-6:  #98BB6C;  --temp-7:  #BFBB70;  --temp-8:  #E6C384;
+    --temp-9:  #F2A96E;  --temp-10: #FFA066;  --temp-11: #E46876;
+    --temp-12: #C34043;
+
+    /* Escala de vento (km/h), fixa como a Beaufort. Seis faixas: calmaria,
+    brisa leve, moderado, forte, muito forte, vendaval. */
+    --vento-0: #717187;  --vento-1: #7E9CD8;  --vento-2: #7FB4CA;
+    --vento-3: #E6C384;  --vento-4: #FFA066;  --vento-5: #E46876;
+
 }
 
 @media (prefers-color-scheme: light) {
@@ -62,6 +76,20 @@ This pallete was created based on the Kanagawa theme (rebelot/kanagawa.nvim):
     --relevo-10: #B36A48;  --relevo-11: #A05C46;  --relevo-12: #8E5347;
     --relevo-13: #9C7A6A;  --relevo-14: #C2B6A8;
 
+    /* Rampa termica (2 C por faixa, de 10 a 34 C). Tons mais fechados que os
+    do Wave: sobre o fundo claro do Lotus, um azul ou um verde claro demais
+    deixaria de se distinguir da propria superficie. */
+    --temp-0:  #3E5C8F;  --temp-1:  #4B72A3;  --temp-2:  #4E8CA2;
+    --temp-3:  #5E9186;  --temp-4:  #6E8F6A;  --temp-5:  #7C8F4E;
+    --temp-6:  #8D8B3F;  --temp-7:  #9C8235;  --temp-8:  #A9742A;
+    --temp-9:  #B25F22;  --temp-10: #AB4A28;  --temp-11: #A32F42;
+    --temp-12: #8A2438;
+
+    /* Escala de vento (km/h), fixa como a Beaufort. Seis faixas: calmaria,
+    brisa leve, moderado, forte, muito forte, vendaval. */
+    --vento-0: #6E6A5C;  --vento-1: #42588A;  --vento-2: #4E8CA2;
+    --vento-3: #8F6B12;  --vento-4: #AB4A28;  --vento-5: #A32F42;
+
   }
 }
 
@@ -87,4 +115,18 @@ This pallete was created based on the Kanagawa theme (rebelot/kanagawa.nvim):
     --relevo-7:  #DCA561;  --relevo-8:  #D39257;  --relevo-9:  #C67F4F;
     --relevo-10: #B36A48;  --relevo-11: #A05C46;  --relevo-12: #8E5347;
     --relevo-13: #9C7A6A;  --relevo-14: #C2B6A8;
+
+    /* Rampa termica (2 C por faixa, de 10 a 34 C). Tons mais fechados que os
+    do Wave: sobre o fundo claro do Lotus, um azul ou um verde claro demais
+    deixaria de se distinguir da propria superficie. */
+    --temp-0:  #3E5C8F;  --temp-1:  #4B72A3;  --temp-2:  #4E8CA2;
+    --temp-3:  #5E9186;  --temp-4:  #6E8F6A;  --temp-5:  #7C8F4E;
+    --temp-6:  #8D8B3F;  --temp-7:  #9C8235;  --temp-8:  #A9742A;
+    --temp-9:  #B25F22;  --temp-10: #AB4A28;  --temp-11: #A32F42;
+    --temp-12: #8A2438;
+
+    /* Escala de vento (km/h), fixa como a Beaufort. Seis faixas: calmaria,
+    brisa leve, moderado, forte, muito forte, vendaval. */
+    --vento-0: #6E6A5C;  --vento-1: #42588A;  --vento-2: #4E8CA2;
+    --vento-3: #8F6B12;  --vento-4: #AB4A28;  --vento-5: #A32F42;
 }

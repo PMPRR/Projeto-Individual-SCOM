@@ -127,6 +127,37 @@
   opacity: 0.6;
 }
 
+/* Equivalente acessivel das divisas municipais. Controle nativo de proposito:
+   um <select> ja vem pesquisavel pela digitacao, operavel so com o teclado e
+   anunciado pelo leitor de tela, sem uma linha de ARIA. */
+.layer-select {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  margin-block-start: var(--sp-3);
+}
+
+.layer-select label {
+  font-weight: 600;
+}
+
+.layer-select select {
+  min-height: 2.75rem; /* alvo de toque de 44px */
+  padding: var(--sp-2) var(--sp-3);
+  border: 1px solid var(--c-line);
+  border-radius: var(--radius);
+  background-color: var(--c-bg);
+  color: var(--c-fg);
+  font: inherit;
+  cursor: pointer;
+}
+
+.layer-select select:disabled {
+  cursor: not-allowed;
+  color: var(--c-muted);
+  opacity: 0.6;
+}
+
 .layer-toggles-hint {
   margin-block-start: var(--sp-2);
   color: var(--c-muted);
@@ -207,15 +238,27 @@
   border-radius: var(--radius);
 }
 
-/* A escala altimetrica tem mais de uma duzia de faixas: compacta, sem
-   descricao por item, e legivel de cima para baixo. */
-.legend-relevo {
+/* As escalas continuas -- altimetrica, termica e de vento -- tem muitas
+   faixas: compactas e legiveis de cima para baixo, como nas escalas
+   impressas. */
+.legend-relevo,
+.legend-temperatura,
+.legend-vento {
   gap: var(--sp-1);
 }
 
-.legend-relevo .legend-item dt {
+.legend-relevo .legend-item dt,
+.legend-temperatura .legend-item dt,
+.legend-vento .legend-item dt {
   font-weight: 400;
   font-size: var(--fs-sm);
+}
+
+/* O veu nao e um tom da escala: e a ausencia de dado. Recebe a cor da pagina,
+   a mesma que o cobre no mapa, e nao um tom da rampa termica. */
+.legend-swatch-veu {
+  border-radius: var(--radius);
+  background-color: var(--c-bg);
 }
 
 /* ==========================================================================

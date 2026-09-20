@@ -16,6 +16,7 @@
         <script src="../assets/vendor/leaflet/leaflet.js" defer></script>
         <script src="../assets/data/sp-geo.js" defer></script>
         <script src="../assets/data/relevo-sp.js" defer></script>
+        <script src="../assets/data/sp-municipios.js" defer></script>
         <script src="../assets/js/campo.js" defer></script>
         <script src="../assets/js/map.js" defer></script>
     </head>
@@ -86,7 +87,11 @@
                 </section>
 
                 <aside class="map-aside" aria-labelledby="layers-heading">
-                    <h2 id="layers-heading">Camadas</h2>
+                    <!-- O painel deixou de se chamar "Camadas" porque um dos
+                        grupos passou a ter esse nome: um título repetido dentro
+                        do próprio bloco que ele rotula confunde a navegação por
+                        cabeçalhos do leitor de tela. -->
+                    <h2 id="layers-heading">Controles do mapa</h2>
 
                     <!-- fieldset/legend agrupa as caixas relacionadas; cada
                         label e associado por for/id ao seu input. -->
@@ -99,17 +104,22 @@
                             </div>
 
                             <div class="layer-toggle">
+                                <input type="radio" id="campo-temperatura" name="campo" value="temperatura" data-campo>
+                                <label for="campo-temperatura">Temperatura</label>
+                            </div>
+
+                            <div class="layer-toggle">
                                 <input type="radio" id="campo-confianca" name="campo" value="confianca" data-campo>
                                 <label for="campo-confianca">Confiança da medição</label>
                             </div>
                         </fieldset>
 
                         <fieldset class="layer-toggles">
-                            <legend class="layer-toggles-legend">Referências</legend>
+                            <legend class="layer-toggles-legend">Camadas</legend>
 
                             <div class="layer-toggle">
-                                <input type="checkbox" id="camada-estacoes" data-camada="estacoes" checked>
-                                <label for="camada-estacoes">Estações</label>
+                                <input type="checkbox" id="camada-vento" data-camada="vento">
+                                <label for="camada-vento">Vento (setas)</label>
                             </div>
 
                             <div class="layer-toggle">
@@ -126,6 +136,46 @@
                             Camadas de relevo indisponíveis: gere
                             <code>assets/data/relevo-sp.js</code> com
                             <code>python3 tools/build-sp-geo.py --contornos</code>.
+                            </p>
+                        </fieldset>
+
+                        <fieldset class="layer-toggles">
+                            <legend class="layer-toggles-legend">Referências</legend>
+
+                            <div class="layer-toggle">
+                                <input type="checkbox" id="camada-estacoes" data-camada="estacoes" checked>
+                                <label for="camada-estacoes">Estações</label>
+                            </div>
+
+                            <div class="layer-toggle">
+                                <input type="checkbox" id="camada-municipios" data-camada="municipios">
+                                <label for="camada-municipios">Divisas municipais</label>
+                            </div>
+
+                            <!-- Os 645 contornos municipais são uma referência
+                                puramente visual: não há como percorrê-los pelo
+                                teclado sem transformar o mapa numa armadilha de
+                                TAB. Esta lista é o equivalente acessível — um
+                                controle nativo, pesquisável pela digitação, que
+                                dá em texto a mesma informação que a divisa dá
+                                pelo desenho: onde fica o município e o que o
+                                campo interpolado diz ali. -->
+                            <div class="layer-select">
+                                <label for="municipio-seletor">Consultar município</label>
+                                <select id="municipio-seletor" aria-describedby="municipio-ajuda">
+                                    <option value="">Selecione um município</option>
+                                </select>
+                                <p class="layer-toggles-hint" id="municipio-ajuda">
+                                A escolha enquadra o município no mapa e descreve em
+                                texto a temperatura interpolada e a estação mais
+                                próxima.
+                                </p>
+                            </div>
+
+                            <p class="layer-toggles-hint" id="municipios-aviso" hidden>
+                            Divisas municipais indisponíveis: gere
+                            <code>assets/data/sp-municipios.js</code> com
+                            <code>python3 tools/build-municipios.py</code>.
                             </p>
                         </fieldset>
 
@@ -153,12 +203,26 @@
                                 <dl class="legend legend-relevo" id="legenda-relevo"></dl>
                             </div>
 
-                            <!-- Legenda do campo interpolado: as porcentagens mudam com
-                                as estações, então também são montadas por map.js. -->
+                            <!-- Legendas dos campos interpolados: as faixas e as
+                                porcentagens mudam com as estações, então também são
+                                montadas por map.js. Cada bloco guarda o seu próprio
+                                resumo textual. -->
+                                <div class="legend-block" id="bloco-temperatura" hidden>
+                                    <h3>Temperatura interpolada</h3>
+                                    <dl class="legend legend-temperatura" id="legenda-temperatura"></dl>
+                                    <p class="map-caption" id="temperatura-resumo"></p>
+                                </div>
+
+                                <div class="legend-block" id="bloco-vento" hidden>
+                                    <h3>Vento</h3>
+                                    <dl class="legend legend-vento" id="legenda-vento"></dl>
+                                    <p class="map-caption" id="vento-resumo"></p>
+                                </div>
+
                                 <div class="legend-block" id="bloco-confianca" hidden>
                                     <h3>Campo de confiança</h3>
                                     <dl class="legend" id="legenda-confianca"></dl>
-                                    <p class="map-caption" id="campo-resumo" hidden></p>
+                                    <p class="map-caption" id="campo-resumo"></p>
                                 </div>
                 </aside>
             </div>

@@ -112,6 +112,58 @@
     return dentro;
   }
 
+  /* --- Ponto dentro do Estado ---------------------------------------------- */
+
+  /* A mascara acima resolve o caso de uma grade inteira. Para punhados de
+     pontos avulsos -- as setas do campo de vento, por exemplo, que mudam de
+     posicao a cada deslocamento do mapa -- montar um canvas sairia mais caro
+     que testar ponto a ponto.
+
+     As arestas sao achatadas num unico Float64Array e guardadas por malha: o
+     custo de percorrer a geometria e pago uma vez, nao a cada consulta. */
+  const cacheArestas = new WeakMap();
+
+  function arestasDe(malha) {
+    if (cacheArestas.has(malha)) return cacheArestas.get(malha);
+
+    const bruto = [];
+    ((malha && malha.features) || []).forEach(function (feicao) {
+      const geometria = feicao.geometry;
+      if (!geometria) return;
+      const poligonos = geometria.type === "Polygon"
+        ? [geometria.coordinates]
+        : geometria.coordinates;
+      poligonos.forEach(function (aneis) {
+        aneis.forEach(function (anel) {
+          for (let i = 0; i < anel.length - 1; i++) {
+            bruto.push(anel[i][0], anel[i][1], anel[i + 1][0], anel[i + 1][1]);
+          }
+        });
+      });
+    });
+
+    const arestas = Float64Array.from(bruto);
+    cacheArestas.set(malha, arestas);
+    return arestas;
+  }
+
+  /* Numero de cruzamentos a esquerda: impar dentro, par fora. Aneis internos
+     (furos) invertem a paridade sozinhos, sem tratamento especial. */
+  function dentroDaMalha(malha, lat, lon) {
+    const arestas = arestasDe(malha);
+    let dentro = false;
+
+    for (let i = 0; i < arestas.length; i += 4) {
+      const x0 = arestas[i], y0 = arestas[i + 1];
+      const x1 = arestas[i + 2], y1 = arestas[i + 3];
+      if ((y0 > lat) !== (y1 > lat) &&
+          lon < ((x1 - x0) * (lat - y0)) / (y1 - y0) + x0) {
+        dentro = !dentro;
+      }
+    }
+    return dentro;
+  }
+
   /* --- Marching squares ---------------------------------------------------- */
 
   /* Arestas da celula: T superior, R direita, B inferior, L esquerda.
@@ -294,6 +346,7 @@
   global.ClimaCampo = {
     construir: construir,
     aneisDaMalha: aneisDaMalha,
+    dentroDaMalha: dentroDaMalha,
     distanciaKm: distanciaKm,
   };
 })(window);
