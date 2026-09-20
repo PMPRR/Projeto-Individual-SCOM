@@ -1,0 +1,205 @@
+/* ==========================================================================
+   auth.css — paginas de autenticacao (login.html e signup.html)
+   Depende de themes.css (variaveis --c-*) e de style.css (--sp-*, --radius,
+   .btn). Carregar sempre depois dos dois.
+   ========================================================================== */
+
+/* ==========================================================================
+   Layout da pagina
+   ========================================================================== */
+
+.auth {
+    width: min(100% - 2 * var(--gutter), var(--wrap));
+    margin-inline: auto;
+    padding-block: var(--sp-6);
+
+    display: grid;
+    gap: var(--sp-6);
+    align-content: start;
+}
+
+/* Formulario a esquerda, contexto a direita: a tarefa principal fica no
+   comeco da ordem de leitura e da ordem de tabulacao. */
+@media (min-width: 64em) {
+    .auth {
+        grid-template-columns: minmax(0, 28rem) minmax(0, 1fr);
+        gap: var(--sp-7);
+        align-content: center;
+        padding-block: var(--sp-7);
+    }
+}
+
+/* ==========================================================================
+   Cartao do formulario
+   ========================================================================== */
+
+.auth-card {
+    padding: var(--sp-6);
+    background-color: var(--c-surface);
+    border: 1px solid var(--c-line);
+    border-radius: var(--radius);
+}
+
+.auth-lede {
+    margin-block-start: var(--sp-2);
+    color: var(--c-muted);
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-5);
+    margin-block-start: var(--sp-6);
+}
+
+/* Linha "manter conectado" + "esqueci minha senha" */
+.auth-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--sp-3);
+    font-size: var(--fs-sm);
+}
+
+.auth-switch {
+    margin-block-start: var(--sp-5);
+    padding-block-start: var(--sp-5);
+    border-block-start: 1px solid var(--c-line);
+    font-size: var(--fs-sm);
+    color: var(--c-muted);
+}
+
+/* ==========================================================================
+   Campos
+   ========================================================================== */
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-2);
+}
+
+.field-label {
+    font-weight: 600;
+}
+
+.field-opcional {
+    font-weight: 400;
+    color: var(--c-muted);
+}
+
+.field-input {
+    width: 100%;
+    min-height: 2.75rem;                    /* alvo de toque de 44px */
+    padding: var(--sp-2) var(--sp-3);
+    border: 1px solid var(--c-line);
+    border-radius: var(--radius);
+
+    background-color: var(--c-bg);
+    color: var(--c-fg);
+    font: inherit;
+    font-size: var(--fs-base);              /* 16px: evita o zoom automatico no iOS */
+    transition: border-color 150ms ease;
+}
+
+.field-input:hover {
+    border-color: var(--c-accent);
+}
+
+/* Erro so aparece depois da interacao do usuario, nunca no carregamento. */
+.field-input:user-invalid {
+    border-color: var(--c-alert);
+}
+
+select.field-input {
+    cursor: pointer;
+}
+
+.field-hint {
+    font-size: var(--fs-sm);
+    color: var(--c-muted);
+}
+
+/* Campo de senha + botao "Mostrar" na mesma linha */
+.field-group {
+    display: flex;
+    gap: var(--sp-2);
+}
+
+.field-group .field-input {
+    flex: 1;
+    min-width: 0;
+}
+
+.field-toggle {
+    flex: none;
+    min-height: 2.75rem;
+    padding-inline: var(--sp-3);
+    border: 1px solid var(--c-line);
+    border-radius: var(--radius);
+
+    background-color: transparent;
+    color: var(--c-fg);
+    font: inherit;
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    cursor: pointer;
+    transition: color 150ms ease, border-color 150ms ease;
+}
+
+.field-toggle:hover {
+    color: var(--c-accent);
+    border-color: var(--c-accent);
+}
+
+/* ==========================================================================
+   Caixas de selecao
+   ========================================================================== */
+
+.field-check {
+    display: flex;
+    align-items: baseline;
+    gap: var(--sp-2);
+}
+
+.field-check input {
+    flex: none;
+    width: 1.125rem;
+    height: 1.125rem;
+    accent-color: var(--c-accent);
+    cursor: pointer;
+}
+
+.field-check label {
+    cursor: pointer;
+}
+
+/* ==========================================================================
+   Painel lateral
+   ========================================================================== */
+
+.auth-aside {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-4);
+    max-width: var(--measure);
+    color: var(--c-muted);
+}
+
+.auth-aside h2 {
+    color: var(--c-fg);
+}
+
+.auth-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-3);
+}
+
+/* A barra a esquerda separa os itens sem depender de marcadores, que o
+   reset global remove. */
+.auth-list li {
+    padding-inline-start: var(--sp-4);
+    border-inline-start: 2px solid var(--c-line);
+}

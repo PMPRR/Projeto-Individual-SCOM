@@ -457,3 +457,34 @@ a {
   background-color: var(--c-accent);
   color: var(--c-on-accent);
 }
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+ 
+/* Uma faixa so: credito academico e autoria. Tudo que navega ja esta no
+   cabecalho fixo, entao repetir links aqui seria ruido. */
+ 
+.site-footer {
+  margin-block-start: var(--sp-7);
+  background-color: var(--c-surface);
+  border-block-start: 1px solid var(--c-line);
+}
+ 
+/* O wrapper existe porque .site-footer > * ja centraliza e limita a largura:
+   os paragrafos precisam de um unico pai para ficarem lado a lado. */
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--sp-2) var(--sp-5);
+  padding-block: var(--sp-5);
+  font-size: var(--fs-sm);
+  color: var(--c-muted);
+}
+ 
+.footer-inner p {
+  max-width: 60ch;
+}
+
