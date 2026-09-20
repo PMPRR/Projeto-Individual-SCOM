@@ -42,4 +42,40 @@
             original.addEventListener("input", verificar);
         }
     }
+
+        /* --- Sem backend (Trabalho I) ---
+       O formulario nao tem para onde enviar: a persistencia, a autenticacao e
+       as rotas protegidas sao o escopo do Trabalho II. Em vez de recarregar a
+       pagina em "#" e devolver o formulario vazio -- que parece uma falha
+       silenciosa --, o envio e interceptado e o motivo fica escrito na tela.
+
+       O preventDefault vem depois da validacao nativa: o navegador so dispara
+       submit em formulario valido, entao os campos obrigatorios, o formato do
+       e-mail e a confirmacao de senha continuam sendo cobrados antes do aviso.
+
+       Sem JavaScript o formulario volta ao comportamento padrao (action="#"),
+       que tambem nao envia nada a lugar nenhum -- a pagina so nao explica. */
+    var TEXTO_AVISO =
+        "Cadastro e login ainda nao funcionam: este e o Trabalho I, " +
+        "que entrega apenas a interface. O backend, o banco de dados e a " +
+        "autenticacao chegam no Trabalho II. O mapa e as medicoes estao " +
+        "abertos a todos, sem conta.";
+
+    document.querySelectorAll(".auth-form").forEach(function (formulario) {
+        formulario.addEventListener("submit", function (evento) {
+            evento.preventDefault();
+
+            var aviso = formulario.querySelector(".auth-aviso");
+            if (!aviso) {
+                return;
+            }
+
+            aviso.textContent = TEXTO_AVISO;
+            aviso.hidden = false;
+
+            /* O aviso e a resposta ao clique, entao precisa estar a vista:
+               em telas baixas o botao pode ser a ultima coisa visivel. */
+            aviso.scrollIntoView({ block: "nearest" });
+        });
+    });
 })();
