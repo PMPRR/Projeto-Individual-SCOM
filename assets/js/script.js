@@ -98,3 +98,63 @@
     }
   });
 })();
+
+
+/* ==========================================================================
+   Alternador de Tema (Claro / Escuro)
+   --------------------------------------------------------------------------
+   Persiste a preferência do usuário em localStorage ('clima-sp-theme').
+   Se não houver valor salvo, respeita a preferência do sistema operacional.
+   ========================================================================== */
+(function () {
+  "use strict";
+
+  const themeToggle = document.getElementById("theme-toggle");
+  if (!themeToggle) return;
+
+  const STORAGE_KEY = "clima-sp-theme";
+
+  function getCurrentTheme() {
+    const savedTheme = localStorage.getItem(STORAGE_KEY);
+    if (savedTheme) {
+      return savedTheme;
+    }
+    return window.matchMedia("(prefers-color-scheme: light)").matches
+      ? "light"
+      : "dark";
+  }
+
+  function applyTheme(theme) {
+    document.documentElement.setAttribute("data-theme", theme);
+    const isLight = theme === "light";
+    themeToggle.setAttribute(
+      "aria-label",
+      isLight ? "Alternar para modo escuro" : "Alternar para modo claro"
+    );
+    themeToggle.setAttribute(
+      "title",
+      isLight ? "Mudar para modo escuro" : "Mudar para modo claro"
+    );
+  }
+
+  // Aplica o tema salvo/preferido na inicialização
+  const initialTheme = getCurrentTheme();
+  applyTheme(initialTheme);
+
+  themeToggle.addEventListener("click", function () {
+    const currentTheme =
+      document.documentElement.getAttribute("data-theme") || getCurrentTheme();
+    const newTheme = currentTheme === "light" ? "dark" : "light";
+    localStorage.setItem(STORAGE_KEY, newTheme);
+    applyTheme(newTheme);
+  });
+
+  // Atualiza se a preferência do SO mudar (quando o usuário não definiu manualmente)
+  window
+    .matchMedia("(prefers-color-scheme: light)")
+    .addEventListener("change", function (e) {
+      if (!localStorage.getItem(STORAGE_KEY)) {
+        applyTheme(e.matches ? "light" : "dark");
+      }
+    });
+})();

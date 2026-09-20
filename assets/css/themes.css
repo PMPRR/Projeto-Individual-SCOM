@@ -9,7 +9,8 @@ This pallete was created based on the Kanagawa theme (rebelot/kanagawa.nvim):
 =================================================== */
 
 /* --- Wave: dark theme (default) --- */
-:root {
+:root,
+:root[data-theme="dark"] {
     color-scheme: dark;
 
     --c-bg:      #1F1F28; /* sumiInk3 */
@@ -54,12 +55,13 @@ This pallete was created based on the Kanagawa theme (rebelot/kanagawa.nvim):
 
     /* Rampa altimetrica (200 m por faixa). Fora dos seis tons da interface de
     proposito: aqui a cor e dado, nao decoracao. */
-    --relevo-0:  #2A2A37;  /* 0-200 m, igual a superficie */
-    --relevo-1:  #3F5E4A;  --relevo-2:  #4F7050;  --relevo-3:  #648457;
-    --relevo-4:  #7E9A5E;  --relevo-5:  #98BB6C;  --relevo-6:  #B4B06B;
-    --relevo-7:  #C0A36E;  --relevo-8:  #DCA561;  --relevo-9:  #E08C5E;
-    --relevo-10: #FFA066;  --relevo-11: #E6879A;  --relevo-12: #D27E99;
-    --relevo-13: #C8BFA8;  --relevo-14: #DCD7BA;
+    --relevo-0:  #EDE7C4;  /* 0-200 m, quase a superficie */
+    --relevo-1:  #CFDCA8;  --relevo-2:  #C3D497;  --relevo-3:  #BCCB88;
+    --relevo-4:  #C6C87E;  --relevo-5:  #D2C276;  --relevo-6:  #DBB56B;
+    --relevo-7:  #DCA561;  --relevo-8:  #D39257;  --relevo-9:  #C67F4F;
+    --relevo-10: #B36A48;  --relevo-11: #A05C46;  --relevo-12: #8E5347;
+    --relevo-13: #9C7A6A;  --relevo-14: #C2B6A8;
+
   }
 }
 

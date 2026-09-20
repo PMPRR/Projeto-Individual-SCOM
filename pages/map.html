@@ -20,6 +20,7 @@
         <script src="../assets/js/map.js" defer></script>
     </head>
     <body>
+
         <header class="site-header">
             <a class="site-brand" href="../index.html">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" aria-hidden="true" focusable="false"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M208.3 192c43.1 0 80.5 24.4 99.2 60.1 14.7-17.2 36.4-28.1 60.8-28.1 44.2 0 80 35.8 80 80 0 5.5-.6 10.9-1.6 16 .5 0 1.1 0 1.6 0 53 0 96 43 96 96s-43 96-96 96l-320 0c-53 0-96-43-96-96 0-42.5 27.7-78.5 66-91.2-1.3-6.8-2-13.7-2-20.8 0-61.9 50.1-112 112-112zm192-223.8c5.3 0 10.3 2.7 13.3 7.1l47.3 70.4 83.3-16.3c5.2-1 10.6 .7 14.3 4.4 3.8 3.8 5.4 9.2 4.4 14.4l-16.3 83.3 70.4 47.3c4.4 3 7.1 8 7.1 13.3 0 5.3-2.6 10.3-7 13.2l-70.4 47.3 14.5 74.2c-17.2-21.7-40.4-38.4-67.2-47.3-2.5-12.7-6.9-24.6-12.8-35.7 9.6-14.9 15.2-32.7 15.2-51.7 0-53-43-96-96-96-47.9 0-87.6 35.1-94.8 80.9-20.9-16-45.9-27-73.1-31.1l21.5-14.5-16.3-83.2-.3-2c-.3-4.6 1.3-9.1 4.6-12.4 3.8-3.8 9.2-5.4 14.4-4.4l83.3 16.3 47.3-70.4 1.2-1.6c3-3.5 7.4-5.5 12.1-5.5zm0 175.8c26.5 0 48 21.5 48 48 0 3.8-.5 7.6-1.4 11.1-21.7-16.9-48.9-27.1-78.6-27.1-4.6 0-9.1 .2-13.5 .7 6.4-19 24.3-32.7 45.5-32.7z"/></svg>
@@ -27,26 +28,41 @@
             </a>
             <nav class="site-nav" aria-label="Navegação principal">
                 <ul class="site-nav-list" role="list">
-                    <li><a href="../index.html">Início</a></li>
+                    <li><a href="../index.html" >Início</a></li>
                     <li><a href="map.html" aria-current="page">Mapa</a></li>
                 </ul>
             </nav>
 
-            <div class="site-account">
-                <button class="site-account-toggle" type="button"
-                    id="account-toggle"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                    aria-controls="account-menu">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" aria-hidden="true" focusable="false"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M224 248a120 120 0 1 0 0-240 120 120 0 1 0 0 240zm-29.7 56C95.8 304 16 383.8 16 482.3 16 498.7 29.3 512 45.7 512l356.6 0c16.4 0 29.7-13.3 29.7-29.7 0-98.5-79.8-178.3-178.3-178.3l-59.4 0z"/></svg>
-                    <span class="site-account-name">Conta</span>
-                </button>
+            <div class="site-header-actions">
+                <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Alterar tema" title="Alterar tema">
+                    <!-- Sun Icon (shown in dark mode) -->
+                    <svg class="theme-icon theme-icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <circle cx="12" cy="12" r="5" fill="none" stroke="currentColor" stroke-width="2"/>
+                        <path stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+                    </svg>
+                    <!-- Moon Icon (shown in light mode) -->
+                    <svg class="theme-icon theme-icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <path fill="currentColor" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                    </svg>
 
-                <ul class="site-account-menu" id="account-menu" role="list" hidden>
-                    <li><a href="login.html">Entrar</a></li>
-                    <li><a href="signup.html">Criar conta</a></li>
-                </ul>
+                </button>
+                <div class="site-account">
+                    <button class="site-account-toggle" type="button"
+                        id="account-toggle"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        aria-controls="account-menu">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" aria-hidden="true" focusable="false"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M224 248a120 120 0 1 0 0-240 120 120 0 1 0 0 240zm-29.7 56C95.8 304 16 383.8 16 482.3 16 498.7 29.3 512 45.7 512l356.6 0c16.4 0 29.7-13.3 29.7-29.7 0-98.5-79.8-178.3-178.3-178.3l-59.4 0z"/></svg>
+                        <span class="site-account-name">Conta</span>
+                    </button>
+
+                    <ul class="site-account-menu" id="account-menu" role="list" hidden>
+                        <li><a href="login.html">Entrar</a></li>
+                        <li><a href="signup.html">Criar conta</a></li>
+                    </ul>
+                </div>
             </div>
+
         </header>
         <main id="content" class="map-page">
             <h1>Mapa meteorológico do Estado de São Paulo</h1>
@@ -121,29 +137,29 @@
                             </div>
                             <div class="legend-item">
                                 <dt><span class="legend-swatch legend-swatch-medium" aria-hidden="true"></span>Confiança média</dt>
-                            <dd>Estação privada com histórico consistente.</dd>
-                        </div>
-                        <div class="legend-item">
-                            <dt><span class="legend-swatch legend-swatch-low" aria-hidden="true"></span>Confiança baixa</dt>
-                            <dd>Leitura antiga ou divergente das estações vizinhas.</dd>
-                        </div>
-                    </dl>
+                                <dd>Estação privada com histórico consistente.</dd>
+                            </div>
+                            <div class="legend-item">
+                                <dt><span class="legend-swatch legend-swatch-low" aria-hidden="true"></span>Confiança baixa</dt>
+                                <dd>Leitura antiga ou divergente das estações vizinhas.</dd>
+                            </div>
+                        </dl>
 
-                    <!-- Escala hipsométrica. O conteúdo é montado por map.js a
-                         partir de relevo-sp.js, porque as faixas que sobram no
-                         arquivo dependem dos dados, não de uma lista fixa. -->
-                    <div class="legend-block" id="bloco-relevo" hidden>
-                        <h3>Altitude</h3>
-                        <dl class="legend legend-relevo" id="legenda-relevo"></dl>
-                    </div>
+                        <!-- Escala hipsométrica. O conteúdo é montado por map.js a
+                            partir de relevo-sp.js, porque as faixas que sobram no
+                            arquivo dependem dos dados, não de uma lista fixa. -->
+                            <div class="legend-block" id="bloco-relevo" hidden>
+                                <h3>Altitude</h3>
+                                <dl class="legend legend-relevo" id="legenda-relevo"></dl>
+                            </div>
 
-                    <!-- Legenda do campo interpolado: as porcentagens mudam com
-                         as estações, então também são montadas por map.js. -->
-                    <div class="legend-block" id="bloco-confianca" hidden>
-                        <h3>Campo de confiança</h3>
-                        <dl class="legend" id="legenda-confianca"></dl>
-                        <p class="map-caption" id="campo-resumo" hidden></p>
-                    </div>
+                            <!-- Legenda do campo interpolado: as porcentagens mudam com
+                                as estações, então também são montadas por map.js. -->
+                                <div class="legend-block" id="bloco-confianca" hidden>
+                                    <h3>Campo de confiança</h3>
+                                    <dl class="legend" id="legenda-confianca"></dl>
+                                    <p class="map-caption" id="campo-resumo" hidden></p>
+                                </div>
                 </aside>
             </div>
 
