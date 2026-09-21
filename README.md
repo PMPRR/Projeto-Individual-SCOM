@@ -51,6 +51,7 @@ nenhuma chave de API, nenhuma instalação.
  
 A malha do Estado (`--geo`) e a malha municipal não dependem de nada além da
 biblioteca padrão. Os passos de relevo baixam dados do INPE e usam numpy.
+
 ---
  
 ## Como executar
