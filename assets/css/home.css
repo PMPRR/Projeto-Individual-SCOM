@@ -1,0 +1,344 @@
+/* ==========================================================================
+   home.css — estilos exclusivos da pagina inicial (index.html)
+   Depende de themes.css (variaveis --c-*) e de style.css (--sp-*, --radius,
+   --faixa, .btn). Carregar sempre depois dos dois.
+
+   Mesma divisao de map.css e auth.css: o que so a home usa nao pesa nas
+   outras paginas. Os componentes compartilhados -- cabecalho, botoes,
+   rodape, tipografia -- continuam em style.css.
+   ========================================================================== */
+
+/* ==========================================================================
+   Faixas de conteudo
+   ========================================================================== */
+
+.hero,
+.secao {
+    width: var(--faixa);
+    margin-inline: auto;
+}
+
+/* Ritmo unico entre as secoes: o espacamento nao varia de uma para a outra
+   (criterio A1). */
+.secao {
+    padding-block: var(--sp-7);
+    border-block-start: 1px solid var(--c-line);
+}
+
+/* ==========================================================================
+   Hero
+   ========================================================================== */
+
+.hero {
+    display: grid;
+    gap: var(--sp-6);
+    align-content: center;
+    padding-block: var(--sp-7);
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-5);
+}
+ 
+.hero-content h1 {
+    max-width: 18ch;
+}
+
+/* Sobretitulo. Caixa alta so aqui e no rodape das secoes: em bloco de texto
+   ela derruba a legibilidade, em um rotulo de tres palavras nao. */
+.hero-olho {
+    margin-block-end: calc(var(--sp-3) * -1);
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--c-accent);
+}
+
+.hero-lede {
+    font-size: var(--fs-lg);
+    color: var(--c-muted);
+}
+ 
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-3);
+    max-width: none; /* anula o max-width global de p */
+}
+
+/* --- Numeros do hero --- */
+
+.hero-numeros {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-5) var(--sp-6);
+    margin-block-start: var(--sp-2);
+    padding-block-start: var(--sp-5);
+    border-block-start: 1px solid var(--c-line);
+}
+
+/* O valor vem antes do rotulo na leitura visual, mas depois dele no HTML:
+   column-reverse inverte a pintura sem mexer na ordem do documento, que e a
+   que o leitor de tela anuncia (rotulo, depois valor). */
+.numero {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: var(--sp-1);
+}
+
+.numero dd {
+    font-family: var(--font-num);
+    font-size: 1.75rem;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--c-accent);
+}
+
+.numero dt {
+    font-size: var(--fs-sm);
+    color: var(--c-muted);
+}
+
+/* --- Ilustracao --- */
+
+/* A imagem tem fundo branco proprio. Sem a moldura em --c-surface ela vira um
+   retangulo aceso no tema escuro; com ela, le-se como uma prancha sobre a
+   pagina. */
+.hero-figura {
+    justify-self: center;
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-3);
+    padding: var(--sp-3);
+    background-color: var(--c-surface);
+    border: 1px solid var(--c-line);
+    border-radius: var(--radius);
+}
+
+.hero-ilustracao {
+    width: 100%;
+    border-radius: calc(var(--radius) - 0.125rem);
+}
+
+.hero-figura figcaption {
+    font-size: var(--fs-sm);
+    color: var(--c-muted);
+}
+ 
+@media (min-width: 64em) {
+    .hero {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 26rem);
+        gap: var(--sp-7);
+        /* Mantem o conteudo principal acima da dobra no desktop (criterio A1). */
+        min-height: calc(100vh - 8rem);
+    }
+}
+
+/* ==========================================================================
+   Secoes da pagina inicial
+   ========================================================================== */
+
+/* Filete acima do titulo: marca o inicio da secao sem precisar de mais uma
+   cor ou de mais um peso tipografico. */
+.secao-titulo::before {
+    content: "";
+    display: block;
+    width: 2.5rem;
+    height: 3px;
+    margin-block-end: var(--sp-4);
+    border-radius: var(--radius-pill);
+    background-color: var(--c-accent);
+}
+
+.secao-lede {
+    margin-block-start: var(--sp-4);
+    color: var(--c-muted);
+}
+
+/* --- Cartoes de recurso --- */
+
+/* auto-fit + minmax: uma coluna no celular, duas no tablet e quatro no
+   desktop, sem um breakpoint para cada caso. */
+.cartoes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: var(--sp-4);
+    margin-block-start: var(--sp-6);
+}
+
+.cartao {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-3);
+    padding: var(--sp-5);
+    background-color: var(--c-surface);
+    border: 1px solid var(--c-line);
+    border-radius: var(--radius);
+    transition: border-color 150ms ease;
+}
+
+.cartao:hover {
+    border-color: var(--c-accent);
+}
+
+.cartao h3 {
+    font-size: var(--fs-lg);
+}
+
+.cartao p {
+    font-size: var(--fs-sm);
+    color: var(--c-muted);
+}
+
+.cartao-icone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: var(--radius);
+    background-color: var(--c-bg);
+    color: var(--c-accent);
+}
+
+.cartao-icone svg {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+/* --- Sobre o projeto --- */
+
+.sobre-layout {
+    display: grid;
+    gap: var(--sp-6);
+    margin-block-start: var(--sp-6);
+    align-items: start;
+}
+
+@media (min-width: 64em) {
+    .sobre-layout {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 20rem);
+        gap: var(--sp-7);
+    }
+}
+
+.sobre-texto {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-4);
+}
+
+/* Os tres niveis de confianca, com as mesmas cores da legenda do mapa: quem
+   leu aqui reconhece la. A barra a esquerda carrega a cor, entao o texto
+   permanece em --c-fg e o contraste nao depende dela. */
+.niveis {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-3);
+    margin-block-start: var(--sp-2);
+}
+
+.nivel {
+    padding-inline-start: var(--sp-4);
+    border-inline-start: 3px solid var(--c-line);
+}
+
+.nivel dt {
+    font-weight: 600;
+}
+
+.nivel dd {
+    font-size: var(--fs-sm);
+    color: var(--c-muted);
+}
+
+.nivel-alta  { border-inline-start-color: var(--c-accent); }
+.nivel-media { border-inline-start-color: var(--c-warn); }
+.nivel-baixa { border-inline-start-color: var(--c-alert); }
+
+.sobre-aside {
+    padding: var(--sp-5);
+    background-color: var(--c-surface);
+    border: 1px solid var(--c-line);
+    border-radius: var(--radius);
+}
+
+.fontes {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-3);
+    margin-block-start: var(--sp-4);
+    font-size: var(--fs-sm);
+    color: var(--c-muted);
+}
+
+.fontes strong {
+    display: block;
+    color: var(--c-fg);
+}
+
+.fontes-nota {
+    margin-block-start: var(--sp-4);
+    padding-block-start: var(--sp-4);
+    border-block-start: 1px solid var(--c-line);
+    font-size: var(--fs-sm);
+    color: var(--c-muted);
+}
+
+/* --- Chamada final --- */
+
+.chamada {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--sp-4);
+    padding: var(--sp-7) var(--sp-5);
+    background-color: var(--c-surface);
+    border: 1px solid var(--c-line);
+    border-radius: var(--radius);
+    text-align: center;
+}
+
+.chamada p {
+    color: var(--c-muted);
+}
+
+/* O filete do titulo fica centralizado junto com o resto do bloco. */
+.chamada .secao-titulo::before {
+    margin-inline: auto;
+}
+
+/* ==========================================================================
+   Impressao
+   ========================================================================== */
+
+@media print {
+    /* 100vh vira a altura da folha: sem anular, o hero sozinho ocupa a
+       primeira pagina inteira e empurra todo o resto. */
+    .hero {
+        min-height: 0;
+        padding-block: var(--sp-5);
+    }
+
+    /* Blocos que perdem o sentido partidos ao meio por uma quebra de pagina:
+       um cartao sem o titulo, um painel de fontes cortado na terceira linha. */
+    .cartao,
+    .sobre-aside,
+    .chamada,
+    .nivel,
+    .hero-figura {
+        break-inside: avoid;
+    }
+
+    /* Duas colunas na impressao criam uma linha de grade que nao pode ser
+       partida: se o painel de fontes nao cabe no que resta da folha, a linha
+       inteira pula para a proxima e deixa meia pagina em branco. Em coluna
+       unica o texto flui e o painel entra logo depois. */
+    .sobre-layout {
+        grid-template-columns: 1fr;
+    }
+}

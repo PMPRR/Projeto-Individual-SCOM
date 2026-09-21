@@ -6,6 +6,7 @@
         <title>ClimaSP - Agregador Metereológico</title>
         <link rel="stylesheet" href="./assets/css/themes.css">
         <link rel="stylesheet" href="./assets/css/style.css">
+        <link rel="stylesheet" href="./assets/css/home.css">
         <script src="./assets/js/script.js" defer></script>
     </head>
     <body>
@@ -54,24 +55,216 @@
         </header>
 
         <main id="content">
-            <section class="hero" aria-labelledby="hero-heading">
+             <section class="hero" aria-labelledby="hero-heading">
                 <div class="hero-content">
-                    <h1>Condições meteorológicas do Estado de São Paulo</h1>
+                    <p class="hero-olho">Dados abertos, reunidos em um lugar só</p>
+                    <h1 id="hero-heading">Condições meteorológicas do Estado de São Paulo</h1>
+                    <p class="hero-lede">
+                        O ClimaSP junta estações oficiais, institutos de pesquisa e redes
+                        colaborativas em um mapa único — e diz, para cada ponto do
+                        território, o quanto aquele número merece confiança.
+                    </p>
                     <p class="hero-actions">
-                    <a class="btn btn-primary" href="./pages/map.html">Ver mapa interativo</a>
-                    <a class="btn btn-secondary" href="./pages/login.html">Entrar</a>
+                        <a class="btn btn-primary" href="./pages/map.html">Ver mapa interativo</a>
+                        <a class="btn btn-secondary" href="#sobre-heading">Sobre o projeto</a>
+                    </p>
+ 
+                    <!-- dl porque cada numero e o valor de um rotulo: e uma lista de
+                         pares, nao uma lista de itens soltos. -->
+                    <dl class="hero-numeros">
+                        <div class="numero">
+                            <dt>Estações</dt>
+                            <dd>28</dd>
+                        </div>
+                        <div class="numero">
+                            <dt>Municípios</dt>
+                            <dd>645</dd>
+                        </div>
+                        <div class="numero">
+                            <dt>Fontes</dt>
+                            <dd>5</dd>
+                        </div>
+                    </dl>
+                </div>
+ 
+                <figure class="hero-figura">
+                    <img class="hero-ilustracao"
+                    src="assets/img/sao-paulo-800.webp"
+                    srcset="assets/img/sao-paulo-600.webp 600w,
+                    assets/img/sao-paulo-800.webp 800w"
+                    sizes="(min-width: 64em) 26rem, 100vw"
+                    alt="Mapa de relevo sombreado do Estado de São Paulo. O degrau da
+                    Serra do Mar acompanha o litoral, a Mantiqueira se destaca no
+                    nordeste e o Planalto Ocidental desce suavemente até a divisa
+                    com o Mato Grosso do Sul."
+                    width="800" height="566"
+                    fetchpriority="high" decoding="async">
+                    <figcaption>
+                        O relevo do Estado explica boa parte do clima: o degrau da Serra
+                        do Mar segura a umidade no litoral, e o Planalto Ocidental fica
+                        do lado seco.
+                    </figcaption>
+                </figure>
+            </section>
+ 
+            <section class="secao recursos" aria-labelledby="recursos-heading">
+                <h2 class="secao-titulo" id="recursos-heading">O que o mapa mostra</h2>
+                <p class="secao-lede">
+                    Quatro camadas que se combinam livremente. Nenhuma delas existe só
+                    na cor: toda faixa tem legenda, porcentagem de cobertura e um
+                    resumo em texto.
+                </p>
+ 
+                <ul class="cartoes" role="list">
+                    <li>
+                        <article class="cartao">
+                            <span class="cartao-icone" aria-hidden="true">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/>
+                                </svg>
+                            </span>
+                            <h3>Temperatura interpolada</h3>
+                            <p>
+                                Isotermas de 2 °C cobrindo todo o território, em uma escala
+                                fixa de 10 a 34 °C — a mesma cor significa a mesma
+                                temperatura em qualquer dia.
+                            </p>
+                        </article>
+                    </li>
+ 
+                    <li>
+                        <article class="cartao">
+                            <span class="cartao-icone" aria-hidden="true">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="9"/>
+                                    <circle cx="12" cy="12" r="5"/>
+                                    <circle cx="12" cy="12" r="1.2"/>
+                                </svg>
+                            </span>
+                            <h3>Índice de confiança</h3>
+                            <p>
+                                Mede evidência, não opinião: cruza a qualidade da fonte, a
+                                idade da leitura e a distância até as estações vizinhas.
+                            </p>
+                        </article>
+                    </li>
+ 
+                    <li>
+                        <article class="cartao">
+                            <span class="cartao-icone" aria-hidden="true">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M9.8 4.4A2 2 0 1 1 11 8H2"/>
+                                    <path d="M17.5 8a2.5 2.5 0 1 1 2 4H2"/>
+                                    <path d="M12.8 19.6A2 2 0 1 0 14 16H2"/>
+                                </svg>
+                            </span>
+                            <h3>Campo de vento</h3>
+                            <p>
+                                Setas que apontam para onde o vento sopra. Onde as estações
+                                discordam do rumo, a seta aparece apagada em vez de
+                                fingir certeza.
+                            </p>
+                        </article>
+                    </li>
+ 
+                    <li>
+                        <article class="cartao">
+                            <span class="cartao-icone" aria-hidden="true">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="m2 20 6.5-13 4 7.5 2.5-4 7 9.5z"/>
+                                    <path d="M6 15.5h5"/>
+                                </svg>
+                            </span>
+                            <h3>Relevo e divisas</h3>
+                            <p>
+                            Faixas altimétricas e curvas de nível a cada 200 m, sobre as
+                            divisas dos 645 municípios do Estado.
+                            </p>
+                        </article>
+                    </li>
+                </ul>
+            </section>
+
+            <section class="secao sobre" aria-labelledby="sobre-heading">
+                <!-- tabindex="-1" para que o botao do hero leve o foco ate aqui, e
+                    nao apenas a rolagem: sem ele, quem navega por teclado continua
+                    com o foco no botao la em cima. -->
+                    <h2 class="secao-titulo" id="sobre-heading" tabindex="-1">Sobre o projeto</h2>
+
+                    <div class="sobre-layout">
+                        <div class="sobre-texto">
+                            <p>
+                            Dados meteorológicos de São Paulo não faltam. O que falta é
+                            reuni-los: INMET, CEMADEN, IAC/CIIAGRO, estações privadas e redes
+                            colaborativas publicam cada um no seu portal, em formatos
+                            diferentes, e nenhum deles responde à pergunta que mais importa
+                            para quem vai decidir alguma coisa — <em>dá para confiar nesse
+                                número?</em>
+                            </p>
+                            <p>
+                            Uma leitura de três horas atrás vale menos que uma de agora. Uma
+                            estação colaborativa sem histórico vale menos que uma oficial
+                            validada. E um ponto a 200 km da estação mais próxima não vale
+                            quase nada, por melhor que seja a estação. O ClimaSP calcula esse
+                            desconto e o mostra no mapa: onde não há evidência suficiente, a
+                            camada de temperatura recebe um véu e o campo assume a cor da
+                            página.
+                            </p>
+                            <p>
+                            O mapa é inteiramente vetorial e abre direto do arquivo, sem
+                            servidor e sem chave de API. A base territorial vem do IBGE e o
+                            relevo do modelo digital de elevação TOPODATA, do INPE.
+                            </p>
+
+                            <dl class="niveis">
+                                <div class="nivel nivel-alta">
+                                    <dt>Confiança alta</dt>
+                                    <dd>Estação oficial, leitura recente e validada.</dd>
+                                </div>
+                                <div class="nivel nivel-media">
+                                    <dt>Confiança média</dt>
+                                    <dd>Estação privada com histórico consistente.</dd>
+                                </div>
+                                <div class="nivel nivel-baixa">
+                                    <dt>Confiança baixa</dt>
+                                    <dd>Leitura antiga ou divergente das estações vizinhas.</dd>
+                                </div>
+                            </dl>
+                        </div>
+
+                        <aside class="sobre-aside" aria-labelledby="fontes-heading">
+                            <h3 id="fontes-heading">De onde vêm os dados</h3>
+                            <ul class="fontes" role="list">
+                                <li><strong>INMET</strong> Instituto Nacional de Meteorologia</li>
+                                <li><strong>CEMADEN</strong> Centro Nacional de Monitoramento e Alertas de Desastres Naturais</li>
+                                <li><strong>IAC/CIIAGRO</strong> Instituto Agronômico de Campinas</li>
+                                <li><strong>Estações privadas</strong> Aeroportos, universidades e empresas</li>
+                                <li><strong>Rede colaborativa</strong> Estações domésticas enviadas por usuários</li>
+                            </ul>
+                            <p class="fontes-nota">
+                            Malha territorial e divisas municipais: IBGE.
+                            Altimetria: TOPODATA/INPE.
+                            </p>
+                        </aside>
+                    </div>
+            </section>
+
+            <section class="secao" aria-labelledby="cta-heading">
+                <div class="chamada">
+                    <h2 class="secao-titulo" id="cta-heading">Veja como está agora</h2>
+                    <p>
+                    O mapa e todas as medições são abertos, sem conta. A conta serve só
+                    para guardar as suas regiões de interesse.
+                    </p>
+                    <p class="hero-actions">
+                    <a class="btn btn-primary" href="./pages/map.html">Abrir o mapa</a>
+                    <a class="btn btn-secondary" href="./pages/signup.html">Criar conta</a>
                     </p>
                 </div>
-                <img class="hero-ilustracao"
-                src="assets/img/sao-paulo-800.webp"
-                srcset="assets/img/sao-paulo-600.webp 600w,
-                assets/img/sao-paulo-800.webp 800w"
-                sizes="(min-width: 64em) 26rem, 100vw"
-                alt="" width="800" height="566"
-                fetchpriority="high" decoding="async">
-            </section>
-            <section class="about-us" aria-labelledby="about-us-heading">
-                <h2 id="about-us-heading">Sobre o projeto</h2>
             </section>
         </main>
 
