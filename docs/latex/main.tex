@@ -1,0 +1,362 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                  TEMPLATE DE TRABALHO
+%                  UNESP - SOROCABA
+%
+%  DADOS DO DOCUMENTO:
+%  Altere somente a seção abaixo para reutilizar o modelo.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[a4paper,12pt]{article}
+
+
+% ==========================================================
+%                    DADOS DO DOCUMENTO
+% ==========================================================
+
+\newcommand{\Instituicao}{UNESP}
+\newcommand{\Campus}{Campus de Sorocaba}
+\newcommand{\Instituto}{ICTS -- Instituto de Ciências e Tecnologia}
+\newcommand{\Curso}{Engenharia de Controle e Automação}
+
+\newcommand{\Disciplina}{Sistemas Computacionais}
+\newcommand{\Titulo}{Desenvolvimento de um \textit{FrontEnd} web para o laboratório LIFS}
+\newcommand{\TipoTrabalho}{Trabalho individual 1}
+
+\newcommand{\Autor}{Paulo de Melo Pereira Rodrigues Ramalho}
+\newcommand{\Orientador}{Prof. Dr. Leopoldo A. D. L. Filho}
+
+\newcommand{\EmailAutor}{paulo.ramalho@unesp.br}
+%\newcommand{\EmailAutorDois}{paulo.ramalho@unesp.br}
+
+\newcommand{\Local}{Sorocaba -- SP}
+\newcommand{\Ano}{2026}
+
+\newcommand{\LogoCapa}{imagens/unesp.png}
+
+
+% ==========================================================
+%                    PACOTES
+% ==========================================================
+
+% Codificação e idioma
+\usepackage[T1]{fontenc}
+\usepackage[portuguese]{babel}
+
+% Fonte
+\usepackage{times}
+
+% Margens
+\usepackage[
+a4paper,
+left=3cm,
+right=2cm,
+top=3cm,
+bottom=2cm
+]{geometry}
+
+% Imagens
+\usepackage{graphicx}
+\graphicspath{{imagens/}}
+
+% Matemática
+\usepackage{
+	amsmath,
+	amssymb,
+	amsfonts,
+	amsthm,
+	amscd,
+	latexsym
+}
+
+% Formatação
+\usepackage{titlesec}
+\usepackage{fontawesome5}
+\usepackage{indentfirst}
+\usepackage{setspace}
+\usepackage{enumitem}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{tcolorbox}
+\usepackage{tabularx}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, positioning, shapes.geometric}
+\usepackage{array}
+\usepackage{ragged2e}
+\usepackage{booktabs}
+\usepackage{longtable}
+
+% Outros
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage{nameref}
+\usepackage{etoolbox}
+\usepackage{pdflscape}
+\usepackage{cancel}
+\usepackage{verbatim}
+\usepackage{csquotes}
+\usepackage{algorithm2e}
+\usepackage{longtable}
+
+% Código
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{colortbl}
+
+
+\definecolor{iaGeracao}{RGB}{218,235,247} \definecolor{iaCorrecao}{RGB}{252,229,205} \definecolor{iaRefinamento}{RGB}{220,240,220} \definecolor{iaAcessibilidade}{RGB}{231,222,245} \definecolor{iaReestruturacao}{RGB}{255,242,190} \definecolor{iaSemEvidencia}{RGB}{235,235,235}
+% Cores
+\definecolor{githubcolor}{HTML}{24292F}
+\definecolor{metricscolor}{HTML}{7B2CBF}
+\definecolor{websitecolor}{HTML}{2D6A4F}
+% Cores do histórico Git
+\definecolor{terminalbg}{RGB}{24,26,27}
+\definecolor{terminaltext}{RGB}{220,220,220}
+\definecolor{gitgreen}{RGB}{80,200,120}
+\definecolor{gitred}{RGB}{255,100,100}
+\definecolor{gitpurple}{RGB}{190,130,255}
+\definecolor{gitorange}{RGB}{255,170,70}
+\definecolor{gitblue}{RGB}{100,170,255}
+\definecolor{gitcyan}{RGB}{80,210,210}
+\definecolor{gitgray}{RGB}{150,160,165}
+\definecolor{gitbranch}{RGB}{255,210,80}
+
+\lstdefinelanguage{GitHistory}{
+	morekeywords={
+		feat,
+		fix,
+		style,
+		perf,
+		docs,
+		chore,
+		refactor,
+		Feature,
+		STYLE
+	},
+	sensitive=true,
+}
+
+\lstdefinestyle{gitstyle}{
+	language=GitHistory,
+	backgroundcolor=\color{terminalbg},
+	basicstyle=\ttfamily\small\color{terminaltext},
+	keywordstyle=\color{gitgreen}\bfseries,
+	commentstyle=\color{gitgray},
+	stringstyle=\color{gitblue},
+	columns=fullflexible,
+	keepspaces=true,
+	showstringspaces=false,
+	breaklines=true,
+	breakatwhitespace=false,
+	frame=single,
+	framerule=0.6pt,
+	rulecolor=\color{black!50},
+	xleftmargin=0.3cm,
+	xrightmargin=0.3cm,
+	aboveskip=10pt,
+	belowskip=10pt,
+	tabsize=4
+}
+
+\lstdefinelanguage{CSS}{
+	morekeywords={
+		display, position, top, left, right, bottom,
+		width, height, max-width, min-width,
+		margin, padding, gap,
+		grid-template-columns, grid-template-rows,
+		flex-direction, align-items, justify-content,
+		font-size, font-family, font-weight,
+		color, background, border,
+		box-sizing, z-index,
+		overflow, transition, animation,
+		outline, outline-offset,
+		order, scroll-behavior
+	},
+	sensitive=true,
+	morecomment=[s]{/*}{*/},
+	morestring=[b]"
+}
+
+% ==========================================================
+%                    BIBLIOGRAFIA
+% ==========================================================
+
+
+
+% ==========================================================
+%                    ESPAÇAMENTO
+% ==========================================================
+
+\titlespacing*{\section}
+{0pt}
+{-5pt}
+{5pt}
+
+\titlespacing*{\subsection}
+{0pt}
+{-5pt}
+{5pt}
+
+
+% ==========================================================
+%                    CORES DOS CÓDIGOS
+% ==========================================================
+
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{bluekeyword}{rgb}{0.13,0.13,1}
+\definecolor{typecolor}{rgb}{0.17,0.57,0.68}
+\definecolor{macrocolor}{rgb}{0.5,0.0,0.0}
+
+
+% ==========================================================
+%                    CONFIGURAÇÃO DO LISTINGS
+% ==========================================================
+
+\lstset{
+	language=C++,
+	backgroundcolor=\color{backcolour},
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{bluekeyword}\bfseries,
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\ttfamily\scriptsize,
+	breakatwhitespace=false,
+	breaklines=true,
+	keepspaces=true,
+	numbers=left,
+	numbersep=5pt,
+	showspaces=false,
+	showstringspaces=false,
+	showtabs=false,
+	tabsize=4,
+	captionpos=b
+}
+
+% Palavras adicionais
+\lstset{
+	morekeywords={
+		uint8_t,
+		size_t,
+		esp_err_t,
+		ESP_RETURN_ON_FALSE,
+		i2c_master_transmit_receive,
+		i2c_master_transmit,
+		static_cast
+	}
+}
+
+
+% ==========================================================
+%                    HYPERLINKS
+% ==========================================================
+
+\hypersetup{
+	hidelinks
+}
+
+
+% ==========================================================
+%                    INÍCIO DO DOCUMENTO
+% ==========================================================
+
+\begin{document}
+	
+	\pagenumbering{arabic}
+	
+	
+	% ==========================================================
+	%                         CAPA
+	% ==========================================================
+	
+	\begin{titlepage}
+		
+		\begin{center}
+			
+			\includegraphics[
+			width=0.8\linewidth
+			]{\LogoCapa}
+			
+			\vspace*{1cm}
+			
+			\textbf{\Large \Campus}\\
+			\textbf{\Large \Instituto}\\[3cm]
+			
+			\large{\TipoTrabalho}\\[2cm]
+			
+			{\large\textbf{\Disciplina}}\\[4cm]
+			
+			\vfill
+			
+			\Large\textbf{Discente: \Autor}\\
+			\textbf{Orientador: \Orientador}\\[3cm]
+			
+			\Local\\
+			\Ano
+			
+		\end{center}
+		
+	\end{titlepage}
+	
+	
+	% ==========================================================
+	%                     FOLHA DE ROSTO
+	% ==========================================================
+	
+	\begin{titlepage}
+		
+		\begin{center}
+			
+			\vspace*{1cm}
+			
+			\textbf{\Autor}\\[2cm]
+			
+			\large\textbf{\Titulo}\\[3cm]
+			
+			Trabalho apresentado ao \Instituto\ da \Instituicao,
+			como parte dos requisitos para a conclusão da disciplina
+			de \Disciplina.\\[2cm]
+			
+			Orientador: \Orientador\\[3cm]
+			
+			\textit{E-mail do aluno autor:}\\
+			
+			\texttt{\EmailAutor}\\
+			%\texttt{\EmailAutorDois}\\[3cm]
+			\vfill
+			\Local\\
+			\Ano
+			
+		\end{center}
+		
+	\end{titlepage}
+	
+	
+	% ==========================================================
+	%                         SUMÁRIO
+	% ==========================================================
+	
+	\tableofcontents
+	
+	\newpage
+
+    \input{sections/introducao.tex}
+    \input{sections/problema.tex}
+    \input{sections/requisitos.tex}
+    \input{sections/processo.tex}
+    \input{sections/ui_ux.tex}
+    \input{sections/tecnologias.tex}
+    \input{sections/responsividade.tex}
+    \input{sections/acessibilidade.tex}
+    \input{sections/lighthouse.tex}
+    \input{sections/compatibilidade.tex}
+    \input{sections/ia_generativa.tex}
+    \input{sections/limitacoes.tex}
+    \input{sections/trab_futuro.tex}
+    \input{sections/conclusoes.tex}
+\end{document}
