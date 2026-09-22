@@ -78,8 +78,8 @@
     },
     {
       id: "srp-01",
-      nome: "Sao Jose do Rio Preto",
-      cidade: "Sao Jose do Rio Preto",
+      nome: "São José do Rio Preto",
+      cidade: "São José do Rio Preto",
       fonte: "INMET",
       lat: -20.8113,
       lon: -49.3758,
@@ -92,8 +92,8 @@
     },
     {
       id: "ara-01",
-      nome: "Aracatuba - IAC",
-      cidade: "Aracatuba",
+      nome: "Araçatuba - IAC",
+      cidade: "Araçatuba",
       fonte: "IAC/CIIAGRO",
       lat: -21.2079,
       lon: -50.4325,
@@ -106,8 +106,8 @@
     },
     {
       id: "pep-01",
-      nome: "Presidente Epitacio",
-      cidade: "Presidente Epitacio",
+      nome: "Presidente Epitácio",
+      cidade: "Presidente Epitácio",
       fonte: "Colaborativa",
       lat: -21.7633,
       lon: -52.1097,
@@ -134,9 +134,9 @@
     },
     {
       id: "mar-01",
-      nome: "Marilia - Zona Norte",
-      cidade: "Marilia",
-      fonte: "Estacao privada",
+      nome: "Marília - Zona Norte",
+      cidade: "Marília",
+      fonte: "Estação privada",
       lat: -22.2171,
       lon: -49.9501,
       temperatura: 29.6,
@@ -164,8 +164,8 @@
     },
     {
       id: "rpt-01",
-      nome: "Ribeirao Preto - Centro",
-      cidade: "Ribeirao Preto",
+      nome: "Ribeirão Preto - Centro",
+      cidade: "Ribeirão Preto",
       fonte: "Colaborativa",
       lat: -21.1775,
       lon: -47.8103,
@@ -222,9 +222,9 @@
     },
     {
       id: "scr-01",
-      nome: "Sao Carlos - Campus",
-      cidade: "Sao Carlos",
-      fonte: "Estacao privada",
+      nome: "São Carlos - Campus",
+      cidade: "São Carlos",
+      fonte: "Estação privada",
       lat: -22.0087,
       lon: -47.8909,
       temperatura: 27.8,
@@ -250,9 +250,9 @@
     },
     {
       id: "cps-01",
-      nome: "Campinas - Barao Geraldo",
+      nome: "Campinas - Barão Geraldo",
       cidade: "Campinas",
-      fonte: "Estacao privada",
+      fonte: "Estação privada",
       lat: -22.8184,
       lon: -47.0647,
       temperatura: 26.3,
@@ -278,9 +278,9 @@
     },
     {
       id: "ava-01",
-      nome: "Avare - Represa",
-      cidade: "Avare",
-      fonte: "Estacao privada",
+      nome: "Avaré - Represa",
+      cidade: "Avaré",
+      fonte: "Estação privada",
       lat: -23.0986,
       lon: -48.9263,
       temperatura: 27.6,
@@ -296,7 +296,7 @@
       id: "sor-01",
       nome: "Sorocaba - ICTS",
       cidade: "Sorocaba",
-      fonte: "Estacao privada",
+      fonte: "Estação privada",
       lat: -23.5015,
       lon: -47.4526,
       temperatura: 24.1,
@@ -308,8 +308,8 @@
     },
     {
       id: "spo-01",
-      nome: "Sao Paulo - Mirante de Santana",
-      cidade: "Sao Paulo",
+      nome: "São Paulo - Mirante de Santana",
+      cidade: "São Paulo",
       fonte: "INMET",
       lat: -23.4961,
       lon: -46.6199,
@@ -336,9 +336,9 @@
     },
     {
       id: "bgp-01",
-      nome: "Braganca Paulista",
-      cidade: "Braganca Paulista",
-      fonte: "Estacao privada",
+      nome: "Bragança Paulista",
+      cidade: "Bragança Paulista",
+      fonte: "Estação privada",
       lat: -22.9526,
       lon: -46.5417,
       temperatura: 24.8,
@@ -352,8 +352,8 @@
     /* --- Vale do Paraiba e Mantiqueira --- */
     {
       id: "sjc-01",
-      nome: "Sao Jose dos Campos",
-      cidade: "Sao Jose dos Campos",
+      nome: "São José dos Campos",
+      cidade: "São José dos Campos",
       fonte: "INMET",
       lat: -23.1896,
       lon: -45.8841,
@@ -366,9 +366,9 @@
     },
     {
       id: "tau-01",
-      nome: "Taubate - Bairro do Barreiro",
-      cidade: "Taubate",
-      fonte: "Estacao privada",
+      nome: "Taubaté - Bairro do Barreiro",
+      cidade: "Taubaté",
+      fonte: "Estação privada",
       lat: -23.0264,
       lon: -45.5553,
       temperatura: 25.2,
@@ -380,8 +380,8 @@
     },
     {
       id: "cjo-01",
-      nome: "Campos do Jordao",
-      cidade: "Campos do Jordao",
+      nome: "Campos do Jordão",
+      cidade: "Campos do Jordão",
       fonte: "INMET",
       lat: -22.7397,
       lon: -45.5914,
@@ -396,7 +396,7 @@
     /* --- Litoral --- */
     {
       id: "uba-01",
-      nome: "Ubatuba - Itagua",
+      nome: "Ubatuba - Itaguá",
       cidade: "Ubatuba",
       fonte: "CEMADEN",
       lat: -23.4336,
@@ -438,8 +438,8 @@
     },
     {
       id: "can-01",
-      nome: "Cananeia - Porto",
-      cidade: "Cananeia",
+      nome: "Cananéia - Porto",
+      cidade: "Cananéia",
       fonte: "CEMADEN",
       lat: -25.0148,
       lon: -47.9268,
@@ -499,7 +499,7 @@
   );
 
   if (!window.SP_GEOJSON) {
-    if (status) status.textContent = "Nao foi possivel carregar a malha do Estado.";
+    if (status) status.textContent = "Não foi possível carregar a malha do Estado.";
     return;
   }
 
@@ -746,7 +746,7 @@
       const c = confiancaEm(centro[0], centro[1]);
       partes.push(
         "Temperatura interpolada de " + t.toFixed(1) +
-        " graus Celsius, com confianca " + nivelDeConfianca(c) + "."
+        " graus Celsius, com confiança " + ROTULO_NIVEL[nivelDeConfianca(c)] + "."
       );
     }
 
@@ -754,7 +754,7 @@
       const w = ventoEm(centro[0], centro[1]);
       if (w) {
         partes.push(
-          "Vento de " + Math.round(w.escalar) + " quilometros por hora, " +
+          "Vento de " + Math.round(w.escalar) + " quilômetros por hora, " +
           "soprando para " + rosaDosVentos(Math.atan2(w.u, w.v) * 180 / Math.PI) + "."
         );
       }
@@ -763,8 +763,8 @@
     const perto = estacaoMaisProxima(centro[0], centro[1]);
     if (perto) {
       partes.push(
-        "Estacao mais proxima: " + perto.estacao.nome + ", a " +
-        Math.round(perto.km) + " quilometros, " +
+        "Estação mais próxima: " + perto.estacao.nome + ", a " +
+        Math.round(perto.km) + " quilômetros, " +
         perto.estacao.temperatura.toFixed(1) + " graus Celsius."
       );
     }
@@ -801,7 +801,7 @@
       realceMunicipio.clearLayers();
 
       if (seletor.value === "") {
-        if (status) status.textContent = "Nenhum municipio selecionado.";
+        if (status) status.textContent = "Nenhum município selecionado.";
         return;
       }
 
@@ -852,6 +852,10 @@
      --------------------------------------------------------------------- */
 
   const QUALIDADE = { alta: 0.95, media: 0.7, baixa: 0.4 };
+
+  /* As chaves internas ficam sem acento (sao identificadores, e o backend do
+     Trabalho II vai devolver essas mesmas chaves); o texto exibido e este. */
+  const ROTULO_NIVEL = { alta: "alta", media: "média", baixa: "baixa" };
   const ALCANCE_KM = 60;   /* comprimento de correlacao espacial */
   const MEIA_VIDA_H = 6;   /* a cada 6 h a leitura vale metade */
   const LIMIARES = [1 / 3, 2 / 3];
@@ -896,9 +900,9 @@
     const resumo = document.getElementById("campo-resumo");
 
     const rotulos = [
-      ["baixa", "Confianca baixa", "Nenhuma estacao proxima o bastante."],
-      ["media", "Confianca media", "Uma estacao proxima, ou varias distantes."],
-      ["alta", "Confianca alta", "Evidencia suficiente para interpolar."],
+      ["baixa", "Confiança baixa", "Nenhuma estação próxima o bastante."],
+      ["media", "Confiança média", "Uma estação próxima, ou várias distantes."],
+      ["alta", "Confiança alta", "Evidência suficiente para interpolar."],
     ];
 
     if (alvo) {
@@ -907,7 +911,7 @@
           '<div class="legend-item">',
           '  <dt><span class="legend-swatch legend-swatch-faixa" style="background-color: ',
           CORES[linha[0]], '" aria-hidden="true"></span>', linha[1], "</dt>",
-          "  <dd>", linha[2], " ", Math.round(fracoes[k] * 100), "% do territorio.</dd>",
+          "  <dd>", linha[2], " ", Math.round(fracoes[k] * 100), "% do território.</dd>",
           "</div>",
         ].join("");
       }).join("");
@@ -917,9 +921,9 @@
        as cores le a mesma informacao em numeros. */
     if (resumo) {
       resumo.textContent =
-        "Cobertura confiavel em " + Math.round(fracoes[2] * 100) +
-        "% do territorio; em " + Math.round(fracoes[0] * 100) +
-        "% nao ha estacao proxima o bastante para sustentar a interpolacao.";
+        "Cobertura confiável em " + Math.round(fracoes[2] * 100) +
+        "% do território; em " + Math.round(fracoes[0] * 100) +
+        "% não há estação próxima o bastante para sustentar a interpolação.";
     }
   }
 
@@ -1026,7 +1030,7 @@
         '  <dt><span class="legend-swatch legend-swatch-faixa" style="background-color: ',
         corDaFaixaTemp(item.k, cores), '" aria-hidden="true"></span>',
         rotuloFaixaTemp(item.k), "</dt>",
-        "  <dd>", Math.round(item.fracao * 100), "% do territorio.</dd>",
+        "  <dd>", Math.round(item.fracao * 100), "% do território.</dd>",
         "</div>",
       ].join("");
     }).join("");
@@ -1034,8 +1038,8 @@
     alvo.innerHTML = escala + [
       '<div class="legend-item">',
       '  <dt><span class="legend-swatch legend-swatch-veu" aria-hidden="true"></span>',
-      "Area esmaecida</dt>",
-      "  <dd>Valor extrapolado: nenhuma estacao proxima o bastante.</dd>",
+      "Área esmaecida</dt>",
+      "  <dd>Valor extrapolado: nenhuma estação próxima o bastante.</dd>",
       "</div>",
     ].join("");
   }
@@ -1048,10 +1052,10 @@
 
     const temps = ESTACOES.map(function (e) { return e.temperatura; });
     alvo.textContent =
-      "Interpolado a partir de " + ESTACOES.length + " estacoes, entre " +
+      "Interpolado a partir de " + ESTACOES.length + " estações, entre " +
       Math.min.apply(null, temps).toFixed(1) + " e " +
       Math.max.apply(null, temps).toFixed(1) + " graus Celsius. Em " +
-      Math.round(fracaoBaixa * 100) + "% do territorio nao ha estacao proxima " +
+      Math.round(fracaoBaixa * 100) + "% do território não há estação próxima " +
       "o bastante, e a area aparece esmaecida.";
   }
 
@@ -1289,11 +1293,11 @@
 
     alvo.textContent =
       "As setas apontam para onde o vento sopra, e a cor indica a " +
-      "intensidade. Nas estacoes o vento vai de " +
+      "intensidade. Nas estações o vento vai de " +
       Math.min.apply(null, velocidades) + " a " +
       Math.max.apply(null, velocidades) + " km/h, predominando de " +
       rosaDosVentos(rumo) + ". Setas apagadas marcam rumo mal definido: " +
-      "as estacoes proximas discordam entre si.";
+      "as estações próximas discordam entre si.";
   }
 
   mapa.on("zoomend moveend", desenharVento);
@@ -1422,6 +1426,14 @@
     };
     faixasCampo.forEach(function (f) {
       f.setStyle({ fillColor: paleta[f.chaveConfianca] });
+    });
+
+    /* CORES e lido por criarMarcador: atualizado aqui, um novo renderizar()
+       tambem nasce com as cores do tema atual. */
+    Object.assign(CORES, paleta);
+    const texto = cor("--c-fg", C_TEXTO);
+    marcadores.forEach(function (marcador) {
+      marcador.setStyle({ color: texto, fillColor: paleta[marcador.confianca] });
     });
 
     camadaMunicipios.setStyle({ color: linha });
@@ -1628,13 +1640,13 @@
     item.innerHTML = [
       '<article class="station-card" id="estacao-' + estacao.id + '" tabindex="-1">',
       "  <h3>" + estacao.nome + "</h3>",
-      '  <p class="station-card-meta">' + estacao.fonte + " &middot; confianca " + estacao.confianca + "</p>",
+      '  <p class="station-card-meta">' + estacao.fonte + " &middot; confiança " + ROTULO_NIVEL[estacao.confianca] + "</p>",
       '  <dl class="station-readings">',
       "    <dt>Temperatura</dt><dd>" + estacao.temperatura.toFixed(1) + " &deg;C</dd>",
       "    <dt>Vento</dt><dd>" + estacao.vento + " km/h de " + rosaDosVentos(estacao.direcao) + "</dd>",
       "    <dt>Chuva (1 h)</dt><dd>" + estacao.chuva.toFixed(1) + " mm</dd>",
       "  </dl>",
-      '  <p class="station-card-meta">Atualizado as <time datetime="' + estacao.atualizadoEm + '">' + formatarHora(estacao.atualizadoEm) + "</time></p>",
+      '  <p class="station-card-meta">Atualizado às <time datetime="' + estacao.atualizadoEm + '">' + formatarHora(estacao.atualizadoEm) + "</time></p>",
       "</article>",
     ].join("");
     return item;
@@ -1648,6 +1660,9 @@
       fillColor: CORES[estacao.confianca],
       fillOpacity: 0.95,
     });
+
+    /* Guardado para que aplicarTema saiba repintar o marcador. */
+    marcador.confianca = estacao.confianca;
 
     marcador.bindPopup(
       "<strong>" + estacao.nome + "</strong><br>" +
@@ -1672,7 +1687,7 @@
     }
     if (status) {
       status.textContent =
-        "Estacao selecionada: " + estacao.nome + ", " +
+        "Estação selecionada: " + estacao.nome + ", " +
         estacao.temperatura.toFixed(1) + " graus Celsius.";
     }
   }
@@ -1688,7 +1703,7 @@
     });
 
     if (listaStatus) {
-      listaStatus.textContent = estacoes.length + " estacoes exibidas no mapa.";
+      listaStatus.textContent = estacoes.length + " estações exibidas no mapa.";
     }
   }
 

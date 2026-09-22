@@ -135,6 +135,11 @@
       "title",
       isLight ? "Mudar para modo escuro" : "Mudar para modo claro"
     );
+
+    /* Avisa as outras partes da pagina que o tema mudou. O mapa desenha em
+       canvas com cores ja resolvidas, e o canvas nao reage sozinho a troca
+       das variaveis CSS: map.js escuta este evento e repinta as camadas. */
+    window.dispatchEvent(new CustomEvent("climasp:tema", { detail: { tema: theme } }));
   }
 
   // Aplica o tema salvo/preferido na inicialização

@@ -56,9 +56,9 @@
        Sem JavaScript o formulario volta ao comportamento padrao (action="#"),
        que tambem nao envia nada a lugar nenhum -- a pagina so nao explica. */
     var TEXTO_AVISO =
-        "Cadastro e login ainda nao funcionam: este e o Trabalho I, " +
+        "Cadastro e login ainda não funcionam: este é o Trabalho I, " +
         "que entrega apenas a interface. O backend, o banco de dados e a " +
-        "autenticacao chegam no Trabalho II. O mapa e as medicoes estao " +
+        "autenticação chegam no Trabalho II. O mapa e as medições estão " +
         "abertos a todos, sem conta.";
 
     document.querySelectorAll(".auth-form").forEach(function (formulario) {
